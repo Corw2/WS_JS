@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> ¿QUIÉN GANA? </h1>
+
+
+			<script type="text/javascript">
+			
+				const RANGO = 20;	// USA NUMERO PARES >= 10.
+				
+				const TERMINAR = RANGO/2;
+			
+				const LEONES = new Array();
+				const TIGRES = new Array();
+				
+				
+				var aleatorio;
+				
+				
+				do {
+			
+					aleatorio = parseInt(Math.random() * RANGO) + 1; // [1..20]
+					
+					//alert(" ---> " + aleatorio);
+					
+					if(aleatorio %2 == 0) {
+						LEONES.push(aleatorio);
+						
+					} else {
+						TIGRES.push(aleatorio);
+					}
+					
+					
+				} while(aleatorio != TERMINAR);
+			
+
+				// https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+				
+				//const sumaTotal = LEONES.reduce( (sumador, numero) => sumador + numero,    0);
+				
+				const CALLBACK = (sumador, numero) => sumador + numero;
+				
+				
+				const sumaTotalLeones = LEONES.reduce(CALLBACK,   0);		// CALLBACK, OFFSET: VALOR INCIAL DEL SUMADOR TOTAL.
+				alert("LEONES(" + sumaTotalLeones + "): \n" + LEONES);
+				
+				
+				const sumaTotalTigres = TIGRES.reduce(CALLBACK,   0);				
+				alert("TIGRES(" + sumaTotalTigres + "): \n" + TIGRES);
+
+				
+				
+				// SON 3 CASOS Y EL TERNARIO SÓLO CONTEMPLA 2 DE ELLOS (GANAR PERDER EMPATAR).
+				//alert("GANAN ... " + (sumaTotalLeones > sumaTotalTigres ? "LOS LEONES" : "LOS TIGRES") );
+				
+				if(sumaTotalLeones > sumaTotalTigres) {
+					alert("GANAN LOS LEONES !!");
+					
+				} else if (sumaTotalLeones < sumaTotalTigres) {
+					alert("GANAN LOS TIGRES !!");
+					
+				} else {
+					alert("LEONES Y TIGRES QUEDAN EMPATADOS !!");
+				}
+				
+			</script>
+			
+			
+		</div>
+		
+	</body>
+
+</html>

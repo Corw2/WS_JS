@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> OPERACIONES BÁSICAS </h1>
+			
+			
+			<script type="text/javascript">
+			
+				var nombre = "LAURA";
+				document.write("TIPO DE LA VARIABLE nombre ... " + typeof(nombre));
+			
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				var valor1 = "123";
+				document.write("isNaN(\"123\") ... " + isNaN(valor1) + "<br/>"); // false (lo entiende como número)
+				document.write(isNaN(valor1) ? "NO NUMÉRICO" : "NUMÉRICO VÁLIDO");
+				
+				document.write("<br/><br/>");
+
+				var valor2 = "PEPE";
+				document.write("isNaN(\"PEPE\") ... " + isNaN(valor2) + "<br/>"); // false (lo entiende como número)
+				document.write(isNaN(valor2) ? "NO NUMÉRICO" : "NUMÉRICO VÁLIDO");
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				
+				var cadenaValor = "678.99";
+				
+				document.write("cadenaValor ... " + cadenaValor + " -> " + typeof(cadenaValor) + "<br/><br/>");
+				
+				
+				conversionInt = parseInt(cadenaValor);
+				conversionFloat = parseFloat(cadenaValor);				
+				
+				document.write("parseInt ... " + conversionInt + " -> " + typeof(conversionInt) + "<br/><br/>");
+				
+				document.write("parseFloat ... " + conversionFloat + " -> " + typeof(conversionFloat));
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				
+				// [0..10] -5 --> min = 0 -5 = -5	//	máx = 10-5 = +5.
+				
+				var aleatorio = parseInt(Math.random() * 11) - 5;	// [0 .. n-1] n=11 [0..11-1] [0..10] 						
+				
+				document.write("aleatorio ... " + aleatorio);
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				var cantidad = 12; // number.
+				//var cantidadTexto = "" + cantidad;	// NO HAGAS ÉSTO.
+				cantidadTexto = cantidad.toString(); // string
+				document.write("cantidad en texto ... " + cantidadTexto + " -> " + typeof(cantidadTexto));
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				
+				alert(" 'cadena simple' \t\t \"cadena doble\" \n\n NOSTROMO: 180924609");	// consola \n \t	pantalla <br/>
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+
+				
+				///////////////////////////////////////////////////////
+				
+				/*
+				var altura = "1.87";			// usa el punto decimal y no la coma (NaN)
+				alert(altura + " ....... " + typeof(altura));
+				
+				altura = +altura;			// MARCAR EL VALOR DE LA VARIABLE CON +.
+				alert(altura + " ....... " + typeof(altura));
+				*/
+				
+				
+				/*
+				var x = true; // "1"
+				alert(x + " ... " + typeof(x));
+				
+				x = +x; // el + lo convierte en un número
+				alert(x + " ... " + typeof(x));
+				*/				
+				
+				///////////////////////////////////////////////////////
+				
+				
+				
+				//var distancia = 0;
+				
+				//alert("ANTES: " + distancia);
+				
+				//++distancia;
+				//distancia++;				
+				
+				
+				//alert("DESPUÉS: " + ++distancia);
+				
+				//alert("DESPUÉS: " + distancia++);				
+				//alert(distancia);
+
+				var x = 10, y = 5; 		// NO DECLARES MÁS DE UNA VARIABLE EN LA MISMA LÍNEA.
+				
+				var z = x++ + ++y;
+				
+				alert("z = " + z);
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				
+				
+				
+				
+				document.write("<br/><hr/><br/>");
+				
+				
+				
+				// QUÉ ENTIENDE COMO false Y QUÉ COMO true:
+					
+				var unaVariable; // undefined
+				
+				const arrayLosFalsos = [ unaVariable, null, "", 0, false, 
+											"true", "false", "pepe", 1, {nombre:"Gardfield", raza:"felino", edad:3},
+												new Array(), [], ["rojo","verde","azul"], [[1,2],[3,4]] ];
+				
+				for(let falsoSINO of arrayLosFalsos) {
+					alert(falsoSINO + " --> LO ENTIENDE COMO ... " + (falsoSINO ? "true":"false") );
+				}
+				
+				
+				
+				
+				
+			</script>			
+
+		</div>
+		
+	</body>
+
+</html>

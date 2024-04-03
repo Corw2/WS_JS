@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+						
+			<script type="text/javascript">
+			
+				/*
+				
+				let contador = 0;
+			
+				do {
+
+					alert(++contador);					
+					
+				} while(contador <3);
+				
+				*/
+				
+				////////////////////////////////////////////////
+				
+				
+				
+				
+				const arrayPares = new Array();
+				const arrayImpares = new Array();
+				
+				const cuantos = 10;
+				
+				
+				do {
+					
+					let aleatorio = parseInt( Math.random() * 100 + 1); // [1..100]
+					
+					//alert("ALEATORIO ... " + aleatorio);
+					
+					if(aleatorio %2 == 0) {
+						arrayPares.push(aleatorio);
+						
+					} else {
+						arrayImpares.push(aleatorio);
+					}
+					
+					
+				} while( arrayPares.length < cuantos && 
+							arrayImpares.length < cuantos );
+				
+				
+				
+				alert("ARRAY PARES ... " + arrayPares.length + "\n" +
+						arrayPares);
+				
+				
+				alert("ARRAY IMPARES ... " + arrayImpares.length + "\n" +
+						arrayImpares);
+				
+				if(arrayPares.length == arrayImpares.length) {
+					alert("QUEAN EMPATADOS !!!");
+					
+				} else {								
+					alert("¿WHO WINS? ... " + 
+							(arrayPares.length > arrayImpares.length ? 
+									"GANAN LOS PARES" : "GANAN LOS IMPARES") );
+				
+				}
+				
+			</script>			
+
+		</div>
+		
+	</body>
+
+</html>

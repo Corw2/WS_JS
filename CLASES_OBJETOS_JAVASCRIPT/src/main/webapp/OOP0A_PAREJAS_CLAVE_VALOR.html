@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>		
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+			
+				// DEFINIR EL OBJETO EN BASE A PAREJAS K-V SEPARADAS POR ,
+			
+				// SE CREA EL OBJETO Y SÓLO TENGO ESE OBJETO ... SI QUIERO MÁS
+				//	COMO ÉL TENGO QUE REPETIR TODO EL PROCESO Y ASIGNAR NUEVOS
+				//	NOMBRES ... si lo quiero 1 vale, pero si quieros varios del
+				//	mismo tipo, utiliza una función creacional.
+				
+				
+				// CON ESTA FORMA TODOS LOS MIEMBROS DEL OBJETO SON PÚBLICOS.
+				
+				const persona = {
+					
+					// PROPIEDADES == CARACTERÍSTICAS DE ESTE OBJETO:
+					nombre : "Alberto",
+					apellidos : "Gonzalez Colmenares",
+					
+					
+					// FUNCIONALIDAD == ¿QUÉ SABES HACER? ... métodos/funciones:
+					
+					descansar : (tiempo) => {
+										// USA NOTACIÓN ARROW O LA TRADICIONAL function:
+										return	"VAMOS A TOMARNOS UN DESCANSO DE ... " +
+													tiempo + " MINUTOS.";					
+					},	
+						
+
+					// MÉTODOS DEL SISTEMA:
+					toString : function() {
+										// CUANDO UN MIEMBRO DEL OBJETO QUIERE HACER
+										//	HACER REFERENCIA A OTRO (USARLO) HAY QUE
+										//	OBLIGATORIAMENTE UTILIZAR this (también
+										// 	también puede poner el nombre del objeto,
+										//	pero induce a confusión):
+											
+										// 	this.nombre		persona.nombre	
+										
+										return ("NOMBRE: " + this.nombre + 
+												" - APELLIDOS: " + this.apellidos); 
+									}, 	
+
+				};
+				
+				//alert("NOMBRE: " + persona.nombre);
+				//alert("APELLIDOS: " + persona.apellidos);
+				
+				alert(persona);
+				
+				alert(persona.descansar(30));
+				
+			</script>
+
+		</div>
+		
+	</body>
+
+</html>

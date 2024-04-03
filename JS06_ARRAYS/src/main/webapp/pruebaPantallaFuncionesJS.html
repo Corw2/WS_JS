@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>		
+	</head>
+	
+		
+	<body>
+	
+		<div align="center">
+
+
+			<div id="pantalla">
+				CONTENIDO ORIGINAL EN HTML
+			</div>			
+
+
+
+			<script type="text/javascript">		
+			
+				const funcion_1 = () => {
+					
+					funcion_2();
+					
+					document.getElementById("pantalla").innerHTML += "<br/> F1 - MUNDO";
+					
+				}; 
+			
+			
+				
+				
+				const funcion_2 = () => {
+					
+					document.getElementById("pantalla").innerHTML += "<br/> F2 - Y ADIOS";
+					
+				}; 
+
+				
+								
+				document.getElementById("pantalla").innerHTML += "<br/> F0 - HOLA";
+				
+				funcion_1();
+				
+				alert("!! FIN !!");
+				
+			</script>			
+			
+		</div>
+		
+	</body>
+	
+</html>

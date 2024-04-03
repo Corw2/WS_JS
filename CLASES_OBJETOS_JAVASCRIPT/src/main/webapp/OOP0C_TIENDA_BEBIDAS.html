@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+			
+			
+				// CONSTANTES:
+					
+			
+				var contador = 1;
+			
+				function generarBebida(tipo, volumen, envase) {
+					
+					//alert(contador++ + " ---> " + tipo + " - " + volumen + " - " + envase);
+					
+					this.tipo = tipo;
+					this.volumen = volumen;
+					this.envase = envase;
+
+					const premioSINO =  
+						( (parseInt(Math.random() * 2) == 1)
+											? "PREMIO" : "SIGUE JUGANDO" );
+					
+					
+					this.toString = function() {									
+										return "TIPO: " + this.tipo + "\n" +  
+											"VOLUMEN: " + this.volumen + "\n" + 
+											"ENVASE: " + this.envase + "\n" +
+											"PREMIO SI/NO: " + premioSINO; 
+									};
+				
+					
+					// NO USES this PORQUE TE DEVOLVERÍA EL ÚLTIMO OBJETO CREADO:						
+					//return this;
+									
+					// NO QUEDA MÁS REMEDIO QUE HACER UN new DESDE FUERA CADA VEZ
+					//	QUE QUIERAS UN NUEVO OBJETO.
+									
+				}
+			
+			
+			
+			
+				function inicializarBebidasTienda() {
+
+					
+						const bebidasTienda = new Array();	// 		= [];
+							
+							
+						bebidasTienda.push( 
+								new generarBebida("COCACOLA", "100cl", "PLASTICO") 
+						);
+						
+
+						bebidasTienda.push( 
+								new generarBebida("WHISKY", "70cl", "CRISTAL") 
+						);
+
+						
+						bebidasTienda.push( 
+								new generarBebida("PACHARAN", "100cl", "ALUMINIO") 
+						);
+					
+						
+						// DEVOLVER EL ARRAY DE LAS BEBIDAS DE QUE DISPONE LA TIENDA.
+						return bebidasTienda;
+						
+				}
+			
+			
+				function imprimirBebidas(bebidas) {
+
+					// IMPRIMIR EN PANTALLA:
+					for(let bebida of bebidas) {
+						alert(bebida);
+					}
+										
+				}
+				
+				
+				
+				
+				////////////// PRUEBA /////////////////////
+				
+				const bebidasTienda = inicializarBebidasTienda();
+				
+				//imprimirBebidas(bebidasTienda);
+				
+				
+				/////////////// COMPRAR ALEATORIAMENTE 6 BEBIDAS ///////////////
+				
+				const tuCompra = [];
+				
+				const cuantas = 6;
+				
+				
+				for (let i=1; i<=cuantas; i++) {
+					
+					let aleatorio = parseInt(Math.random() * bebidasTienda.length);
+					
+					tuCompra.push(bebidasTienda[aleatorio]);
+					
+				}
+				
+				
+				imprimirBebidas(tuCompra);
+				
+			</script>			
+
+		</div>
+		
+	</body>
+
+</html>

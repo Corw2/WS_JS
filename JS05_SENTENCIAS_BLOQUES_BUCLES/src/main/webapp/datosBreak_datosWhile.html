@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+			
+				// BREAK;
+				
+				const CARAS = 6;
+				const PROHIBIDO = 6;
+				
+				var dinero 	= 0;
+				var veces	= 0;
+				
+				var numeros = new Array();
+				
+				var mensaje;
+				
+				
+				
+				// BUCLE INFINITO ... HASTA QUE SE ROMPA POR break:
+					
+				while(true) {
+					
+					let dado = parseInt( Math.random() * CARAS) + 1; // [1 .. CARAS]	[1..6]
+					
+					if(PROHIBIDO === dado) {
+
+						if(veces === 0) {
+							mensaje = "TE HA SALIDO EL PROHIBIDO A LA PRIMERA";
+						}
+						
+						break;		// NO USES ÉSTO.
+					}
+					
+					dinero += dado;
+					veces++;
+					numeros.push(dado);
+					
+				}
+				
+				if(veces != 0) {
+					mensaje = "TOTAL JUGADAS ... " + veces + "\n" +
+								"DINERO ACUMULADO ... " + dinero + "\n\n" +
+									"NUMEROS: " + numeros;
+					
+				}
+				
+				alert(mensaje);
+				
+			
+			</script>
+
+		</div>
+		
+	</body>
+
+</html>

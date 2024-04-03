@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> SWITCH CASE - Fall Through </h1>
+
+
+			<script type="text/javascript">
+			
+				const nota = parseInt(Math.random() * 11); // [0..10]
+				
+				var mensaje;
+				
+				
+				switch(nota) {
+				
+					/* 					
+					
+					// NO LO HAGAS ASÍ ... UTILIZA EL EFECTO FALL-THROUGH ... CAIDA LIBRE.
+					
+					case 0:
+						mensaje = "MUY DEFICIENTE";
+						break;				
+				
+
+					case 1:
+						mensaje = "MUY DEFICIENTE";
+						break;				
+
+						
+					case 2:
+						mensaje = "MUY DEFICIENTE";
+						break;				
+						
+					*/
+						
+						
+						
+					case 0:
+					case 1:
+					case 2:
+						mensaje = "MUY DEFICIENTE";
+						break;
+
+						
+					case 3:
+					case 4:
+						mensaje = "INSUFICIENTE";
+						break;
+						
+						
+					case 5:
+						mensaje = "SUFICIENTE";
+						break;
+						
+						
+					case 6:
+						mensaje = "BIEN";
+						break;
+						
+						
+					case 7:
+					case 8:
+						mensaje = "NOTABLE";	
+						break;
+						
+						
+					case 9:
+					case 10:
+						mensaje = "SOBRESALIENTE";
+						break;						
+						
+						
+					default:
+						mensaje = "LA NOTA " + nota + " NO ES CORRECTA";
+					
+				}
+				
+			
+				alert("HAS SACADO: " + nota + " Y TIENES UN ... " + mensaje);
+				
+			
+			</script>
+
+		</div>
+		
+	</body>
+
+</html>

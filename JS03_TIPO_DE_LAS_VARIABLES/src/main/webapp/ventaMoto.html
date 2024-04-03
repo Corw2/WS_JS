@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+		
+		<style type="text/css">
+			body {
+				background-color:black;
+				color:white;
+			}
+		
+			img {
+				width:500px;
+				height:auto;
+				border-radius:100px;
+				border:2px solid red;
+			}		
+		</style>
+		
+		
+		<script type="text/javascript">
+		
+			function f_ofertar() {
+				
+				const cajaOferta = document.getElementById("oferta");
+				cajaOferta.style.backgroundColor = "white";
+				
+				
+				var cantidad = cajaOferta.value;
+				
+				if(isNaN(cantidad)) {
+					alert("INTRODUCE UNA CANTIDAD NUMÉRICA")
+					cajaOferta.focus();
+					cajaOferta.backgroundColor = "orange";
+					return;
+				}
+				
+				
+				const precioMinimo = 25000;
+				
+				cantidad = parseInt(cantidad);
+				
+				alert("ME HAS OFRECIDO ... " + cantidad);
+				
+				if(precioMinimo > cantidad) {
+					alert("!!! QUE POCO !!! ... OFRECE MÁS.");
+					cajaOferta.focus();
+					cajaOferta.style.backgroundColor = "cyan";
+					return;
+				}
+				
+				alert("!!! OK - VENDIDA !!!");
+				
+				
+				// document.getElementById("moto").XXX
+				
+				with( document.getElementById("moto") ) { 
+					style.opacity = 0.8;
+					src="img/vendida.jpg";
+				}
+				
+				
+				document.getElementById("botonOferta").disabled = true;
+				
+				
+			}
+		
+		</script>
+		
+	</head>
+
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> A LA VENTA - HONDA NR750 - 1992</h1>
+			
+			<img src="img/HondaNR750.jpg" id="moto"/>
+			
+			<br/><br/>
+			
+			<label> ¿CUÁNTO ME OFRECES? ... </label>
+			
+			<!-- REALIZAR VALIDACIÓN MANUAL POR JAVASCRIPT, NO POR HTML5 -->
+			<input type="text" id="oferta" size="6" maxlength="6" autofocus/>
+			
+			<br/><br/><br/>
+			
+			<button onclick="f_ofertar();" id="botonOferta">
+				OFERTAR
+			</button>
+
+		</div>
+		
+	</body>
+
+</html>

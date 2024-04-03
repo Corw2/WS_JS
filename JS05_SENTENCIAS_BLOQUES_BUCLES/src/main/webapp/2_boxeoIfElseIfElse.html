@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> IF - ELSE IF - ELSE </h1>
+			
+			<script type="text/javascript">								
+				
+				const MINIMO 	= 30;
+				const MAXIMO 	= 200;
+				
+				const PLUMA		= 60;
+				const MEDIO 	= 90;
+				const PESADO 	= 150;			// válido si peso [30..150]
+							
+				peso = parseInt(Math.random() * MAXIMO) + 1; // [1..200]
+				
+				//peso = 29;
+				//peso = 151;
+				
+				alert("TU PESO ES DE ... " + peso);
+				
+				if(peso < MINIMO || peso > PESADO) {
+					alert("ERROR: EL PESO DEBE ESTAR ENTRE " + MINIMO + " y " + PESADO);
+					
+				} else {
+				
+					var mensaje = "COMPITES EN LA CATEGORÍA DE PESO ... ";
+					
+					if(peso < PLUMA) {
+						alert(mensaje + "PLUMA");
+						
+					} else if(peso < MEDIO) {
+						alert(mensaje + "MEDIO");
+						
+					} else{
+						alert(mensaje + "PESADO");
+					}
+
+				}
+				
+			</script>
+			
+
+		</div>
+		
+	</body>
+
+</html>

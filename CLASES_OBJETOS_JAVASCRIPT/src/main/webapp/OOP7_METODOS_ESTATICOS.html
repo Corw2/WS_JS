@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>		
+	</head>
+	
+		
+	<body>
+	
+		<div align="center">
+			
+			<h1> CLASES Y OBJETOS </h1>
+			
+			<h2 style="color:blue;"> DEFINICIÓN DE MÉTODOS ESTÁTICOS EN LA CLASE </h2>
+
+			
+			<script type="text/javascript">
+			
+				class Calculadora {
+					
+					// NO PODEMOS HACERLO CONSTANTE. ERROR: static const // const static.
+					static #RANGO;	// = 10;
+					
+				
+					// PUEDE INICIALIZARSE EL ATRIBUTO ESTÁTICO DIRECTAMENTE O BIEN MEDIANTE UN
+					//	BLOQUE DE INICIALIZACIÓN ESTÁTICO (como en Java):
+					static {
+						alert("AJUSTAR EL RANGO A 10");
+						Calculadora.#RANGO = 10; 	// CUANDO EL CAMPO ES ESTÁTICO, DEBES INDICAR EL NOMBRE DE 
+													//	LA CLASE Y NO HACER USO DE this. PORQUE REFERENCIA A
+													// 	UNA INSTANCIA Y LO ESTÁTICO ES DE CLASE.
+					}
+				
+				
+					// CONSTRUCTOR:
+					constructor() {
+						// ESTE ALERT NO SE MUESTRA EN PANTALLA ???
+						alert("EL RANGO ESTA FIJADO EN  ... " + Calculadora.#RANGO);
+					}
+					
+					
+					// I) ESTÁTICO (lo estático o de clase, NUNCA verá a lo de instancia, de objeto):
+					static generarAleatorioRANGO() {						
+						return parseInt(Math.random() * Calculadora.#RANGO) + 1;	// [1 .. RANGO].						
+					}
+				
+					
+					// II) NO ESTÁTICO O DE INSTANCIA (puede ver a los miembros estáticos):
+					instanciaDameUnAleatorio() {
+						// AL HACER USO DE UN MIEMBRO ESTÁTICO NO DEBEMOS INDICAR this
+						//	PUESTO QUE NO PERTENECE A NINGUNA INSTANCIA U OBJETO (ERROR):
+						//
+						// return this.generarAleatorioRANGO();
+						
+						// PARA QUE EL MÉTODO NO ESTÁTICO PUEDE HACER USO DEL ESTÁTICO
+						//		ES OBLIGATORIO INDICAR LA EL NOMBRE DE LA CLASE DENTRO DE
+						//		LA PROPIA CLASE O GENERARÁ ERROR (EN JAVA NO ES NECESARIO).
+						
+						return Calculadora.generarAleatorioRANGO(); 
+						
+					}
+					
+				}
+
+				
+				//////////////////////////// PRUEBAS ////////////////////////////////////
+				
+				
+				// ERROR, NO PODEMOS LLAMAR AL MÉTODO ESTÁTICO DIRECTAMENTE SOBRE LA 
+				//		INSTANCIA U OBJETO CREADO A PARTIR DE LA CLASE:
+				//
+				// new Calculadora().generarAleatorioRANGO();
+				//
+				// NO HAY CONVERSIÓN INTERNA EN LA FORMA ... Calculadora.generarAleatorioRANGO(),
+				// 	COMO SÍ HACE JAVA (lo correcto es emplear la clase y nunca la instancia, pero
+				// 	el compilador de Java nos lo permite, cambiando la instancia por la clase).
+				
+				
+				// INVOCACIÓN AL MÉTODO DE INSTANCIA QUE A SU VEZ LLAMARÁ AL ESTÁTICO (ambos públicos):
+				alert("ALEATORIO INVOCANDO AL METODO DE INSTANCIA: " + 
+							"\n\n\t\t\t\t\t\t" +  
+								new Calculadora().instanciaDameUnAleatorio());
+				
+				
+				// INVOCACIÓN AL MÉTODO ESTÁTICO A PARTIR DE LA PROPIA CLASE:
+				alert("ALEATORIO INVOCANDO AL METODO DE CLASE O ESTATICO " +
+						 	"\n\n\t\t\t\t\t\t" +
+								Calculadora.generarAleatorioRANGO());				
+				
+			</script>
+			
+		</div>
+		
+	</body>
+	
+</html>

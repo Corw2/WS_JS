@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<div id="pantalla"></div>
+			
+			
+			<script type="text/javascript">
+			
+				const capaPantalla = document.querySelector("#pantalla");
+			
+				for(i=1; i<=1000; i++) {
+					
+					/*
+					if(i%2==0 && i<100) {
+						pantalla.innerHTML += "<p>" + i + "</p>";
+					}
+					*/
+					
+					// NO USES NUNCA break O continue EN LOS LOOPS ...
+					//		!!! PROGRAMACIÓN SUCIA !!!
+					
+					// SIEMPRE QUE PUEDAS, NO HAGAS USO DEL INVERSOR:
+						
+					//	i%2 == 0		... PAR	
+						
+					//	i%2 == 1		.. IMPAR
+					
+					if(i%2 == 1) { // IMPARES O BIEN ( ! (i%2 == 1) )
+						continue;		// SÁLTATE LOS IMPARES
+					}
+					
+					if(i>100) {
+						break;
+					}
+					
+					pantalla.innerHTML += "<p>" + i + "</p>";
+					
+				}
+			
+				alert("FIN");
+				
+			</script>
+
+		</div>
+		
+	</body>
+
+</html>

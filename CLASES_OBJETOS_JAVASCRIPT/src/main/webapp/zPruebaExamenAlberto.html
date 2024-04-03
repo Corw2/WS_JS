@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+
+			<script type="text/javascript">
+			
+				function examen(rango) {
+			
+					const longitud = parseInt(Math.random() * rango + 1); // [1..rango] 
+				
+					const numeros = new Array();
+					
+					while(numeros.length < longitud) {
+						numeros.push(parseInt(Math.random() * longitud) - parseInt(longitud/2));
+					}
+					
+					numeros.sort();
+					
+					alert("CUANTOS: " + numeros.length + "\n\n" + numeros);
+					
+					
+					
+					///////////////////////////////////////////
+					
+					
+					
+					for(let x=0; x<numeros.length; x++) {
+						
+						if( ! numeros.includes(numeros[x]+1)) {
+							return "ES EL ... " + (numeros[x]+1);
+						}
+						
+					}
+				
+				}				
+			
+				
+				alert(examen(20));
+				
+			
+			</script>
+			
+			
+
+		</div>
+		
+	</body>
+
+</html>

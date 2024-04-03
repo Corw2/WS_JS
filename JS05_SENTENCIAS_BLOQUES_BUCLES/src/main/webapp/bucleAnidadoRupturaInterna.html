@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<div id="pantalla"></div>
+			
+			
+			
+			
+			<script type="text/javascript">
+			
+				const MAXIMO_NUMEROS 	= 50;
+				const MAXIMO_LETRAS 	= 5;
+				
+				Externo:
+				for(let numero=1; numero<=MAXIMO_NUMEROS; /*NADA*/) {
+				
+					for(let letra='A'; /*NADA*/ ;numero++) {
+						
+						// A B C D E
+						
+						// E == A + 4			... A = 65
+						
+						
+						
+						
+						const valorA = "A".charCodeAt(0);
+						
+						let aleatorio = parseInt(Math.random() * MAXIMO_LETRAS); // [0..4]
+						
+						let caracter = String.fromCharCode(valorA + aleatorio); 
+
+						
+						//alert("A = " + valorA + " ... aleatorio = " + aleatorio + " ... caracter = " + caracter);
+						
+						
+						// SI SALE LA 'E' ... IMPRIMIR Y FINALIZAR (ROMPER EL BUCLE EXTERNO)
+						document.getElementById("pantalla").innerHTML += "<p>" + numero + " - " + caracter + "</p>";
+						
+												
+						if(caracter == 'E') {
+							break Externo;
+						}
+						
+						//document.getElementById("pantalla").innerHTML = "<p>" + numero + " - " + caracter + "</p>";
+						
+					}
+				
+				}
+			
+			</script>
+
+		</div>
+		
+	</body>
+
+</html>

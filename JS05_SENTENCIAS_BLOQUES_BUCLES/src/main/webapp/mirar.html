@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+			
+				/*
+				<xml version="1.0">
+					<colores>
+						<color>ROJO</color>
+						<color>VERDE</color>
+						<color>BLUE</color>
+					</colores>
+				</xml>
+				
+				
+				
+				colores = respuestaAJAX.getElementsByTagName(color);
+				
+				colorROJO = colores[0].firstChild().data
+
+				
+				fetch("miServletAJAX").then( callback(response) ).then( callback (data) );
+				
+				
+				fetch("fichero")
+						.then( (response) => response.text() )
+							.then( (data) = alert(data) )
+				
+				
+				*/
+				
+				
+				const cerveza = {
+										marca: "MAHOU",
+										precio: 0.55							
+				}
+				
+				
+				/*
+				function miFuncion() {					
+					// CÓDIGO DE LA FUNCIÓN										
+				}
+				*/
+				
+				
+				/*
+				alert("PROPIEDAD marca ... " + cerveza.marca);			// DOT NOTATION:	 	objeto.propiedad
+				alert(">> PROPIEDAD marca ... " + cerveza["marca"]);	// BRACKET NOTATION:	objeto["propiedad"]
+				
+				alert("PROPIEDAD precio ... " + cerveza.precio);
+				alert(">> PROPIEDAD precio ... " + cerveza["precio"]);
+				*/
+				
+				//////////////////////////////////
+				
+				/*
+				for(indice in cerveza) {
+					alert("[" + indice + "] = " + cerveza[indice]); // [marca] = MAHOU
+				}
+				*/
+
+				
+				
+				
+				/*
+				Object.entries(cerveza)
+							.forEach( ([k,v],index) => {
+															alert("K=" + k + "\n  V=" + v + "\n index=" + index); 
+														}
+									);
+				*/
+			
+				
+				Object.entries(cerveza)
+						.forEach( ([k,v], index) => {
+														alert(`CLAVE=${k} VALOR=${v} INDICE=${index}`); 
+													}
+								);
+
+
+				
+				
+				////////////////////////////////
+				
+				
+				
+				
+				const nombres = ["ANA", "LAURA", "ALICIA"];			// ITERABLE : QUE SE PUEDE RECORRER.
+				
+				
+				for(indice in nombres) {
+					alert("[" + indice + "] = " + nombres[indice]);	// [0] = "ANA"
+				}
+				
+				
+			</script>
+
+		</div>
+		
+	</body>
+
+</html>

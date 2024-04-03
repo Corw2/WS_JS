@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+		
+		
+		
+		
+		<style type="text/css">
+		
+			span {
+				background-color:brown;
+				border:2px solid black;
+				border-radius:25px;
+				padding:15px;
+				margin:10px;
+				font-size:30px;
+				opacity:0.2;
+				display:inline-block;
+				transition-duration:5s;						
+			}
+			
+		</style>
+		
+		
+		<script type="text/javascript">
+		
+			// 1. crear campo		[-, -, -, -, -, -, -, -, -, -]	-  tierra/barro.
+			
+			// 2. colocar oro x3	[-, -, *, -, -, *, -, -, -, *]	* oro : aleatoriamente
+		
+			// 3. excavar			[-, -, -, -, -, -, -, -, -, -]	... [*,*,*]
+			
+		
+			function f_crearCampo() {
+				
+				//const campo = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]; 
+				
+				
+				// CREAR EL CAMPO VACÍO (longitud 0)
+				var campo = new Array();
+				
+				
+				// RELLENARLO CON TIERRA ... x10 (-)				
+				for(let i=0; i<10; i++) {
+					
+					campo.push("💩");
+					
+					// EMOTICONES EN: https://emojipedia.org/pile-of-poo
+				}
+				
+				
+				// DEVOLVERLO:
+				return campo;
+				
+			}
+			
+			
+			
+			function f_visualizarCampo(campo, retardo) {
+				
+				//alert("CAMPO: \n" + campo);
+				
+				
+				const mostrarCallBack = () => {
+
+					var cajaPantalla = document.querySelector("#pantalla");	// SI ES POR id COLOCAR EL #.
+					
+					// RESET.
+					cajaPantalla.innerHTML = ""; // BORRAR SU CONTENIDO ANTERIOR HACIENDO QUE VALGA CADENA VACÍA.
+					
+					for(trozo of campo) {	// BUCLE FOR TIPO of (RECORRER UN ITERABLE COMO ES UN ARRAY)
+						//alert(trozo);
+						cajaPantalla.innerHTML += "<span>" + trozo + "</span>";
+					}
+					
+					
+					/////
+					
+					
+					if(retardo) {
+						
+						var spanes = document.getElementsByTagName("span");
+					
+						for(let elSpan of spanes) {
+							
+							//alert("EL SPAN ... " + elSpan.innerText);
+							
+							with(elSpan) {
+							
+								if(innerText === "💰") {
+									//style.fontSize="60px";
+									style.opacity="1";
+								}
+							
+							}
+						}
+					
+					}
+					
+					
+				};
+				
+				
+				
+				if(retardo == null) {
+				
+					mostrarCallBack();
+					
+				} else {
+										
+					setTimeout(mostrarCallBack, retardo);					
+					
+				}
+				
+			}
+			
+
+			
+			
+			function f_colocarOro(campo) {
+				// x3 pepitas.
+				
+				for(let i=0; i<3; /* NO INCREMENTES AQUÍ */) {
+					
+					const posicionAleatoria = parseInt(Math.random() * campo.length); // [0..9]
+					
+					//alert(posicionAleatoria);
+					
+					if(campo[posicionAleatoria] === "💩") {
+						campo[posicionAleatoria] = "💰";
+						i++;
+					}
+					
+				}
+				
+			}
+			
+			
+			function f_excavar() {
+				
+				const campo = f_crearCampo();
+				
+				f_visualizarCampo(campo);					// SÓLO TIERRA.
+				
+				f_colocarOro(campo);						// COLOCAR ORO.
+				
+				
+				//f_visualizarCampo(campo);					// TIERRA Y ORO SIN RETARDO.
+				f_visualizarCampo(campo, 2000);				// TIERRA Y ORO CON RETARDO.				
+				
+			}
+			
+			
+		</script>
+		
+		
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> GOLD RUSH </h1>
+
+			<br/><br/><br/>
+
+			<div id="pantalla"></div>
+
+		</div>
+		
+		
+		
+		
+		<script type="text/javascript">
+		
+			/// EJECUCIÓN AL CARGAR /// 
+			
+			/*
+			const campo = f_crearCampo();
+			f_visualizarCampo(campo);
+			*/
+			
+			
+			/*
+			const campo = f_crearCampo();
+				
+			f_visualizarCampo(campo);					// SÓLO TIERRA
+			
+			f_colocarOro(campo);						// COLOCAR ORO
+			
+			
+			//f_visualizarCampo(campo);					// TIERRA Y ORO SIN RETARDO
+			f_visualizarCampo(campo, 2000);				// TIERRA Y ORO CON RETARDO
+			*/
+			
+			
+			f_excavar();
+			
+		</script>
+		
+		
+	</body>
+
+</html>
+
+
+
+<!-- 
+
+				const longitudMinima = 5;
+				const longitudMaxima = 20;
+				
+				if(longitud<longitudMinima || longitud>longitudMaxima) {
+					
+					alert("EL CAMPO REQUIERE UNA LONGITUD ENTRE " + longitudMinima +
+							"Y " + longitudMaxima + " POSICIONES");
+					
+					return;
+					
+				}
+
+
+ -->

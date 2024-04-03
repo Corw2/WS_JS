@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			
+			<script type="text/javascript">
+			
+				// NO ESTÁ EL OPALO
+			
+				const preciosas = 
+					["DIAMANTE", "ZAFIRO", "ESMERALDA", "RUBI"];	// diamante está en posición 0.	
+				
+				
+				//const queBuscas = "esmeralda".toUpperCase();	// sí
+				
+				//const queBuscas = "opalo".toUpperCase();		// no
+				
+				const queBuscas = "diamante".toUpperCase();		// no
+			
+				
+				alert("QUIERO COMPRAR ... " + queBuscas);
+				
+				if(preciosas.includes(queBuscas, 1)) { // empieza a buscar en posición 1.
+					alert("SÍ, TENEMOS ... " + queBuscas);
+					
+				} else {
+					alert("NO, NO TENEMOS ... " + queBuscas);
+				}
+				
+				
+				
+				
+				//////////////////////////////////////////////////////////
+				
+				
+				let bocataJamon = "mi bocata tiene PAN, JAMON, TOMATE, QUESO Y SALSA CHIMICHURRI";
+				
+				const ingredientes = ["TOMATE", "PAN", "LECHUGA", "CHIMICHURRI",
+											"QUESO", "JAMON", "HUEVO"];
+				
+				
+				alert("TU BOCATA ... ");
+				
+				for(ingrediente of ingredientes) {
+					alert("¿TIENE? ... " + ingrediente + " --> " +
+							(bocataJamon.includes(ingrediente) ? "SI" : "NO") );	
+				}
+				
+				
+			
+			</script>
+			
+
+		</div>
+		
+	</body>
+
+</html>

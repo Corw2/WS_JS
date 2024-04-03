@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+		
+		<style type="text/css">
+
+			span {
+				color:red;
+				font-size:38px;
+				font-weight:bolder;
+			}
+			
+			#pantalla {
+				color:brown;
+				font-size:22px;
+				width:700px;
+				height:50px;
+				background-color:cyan;
+				border:3px solid blue;
+				border-radius:25px;
+				padding:30px;
+				margin:30px;			
+			}
+		
+		</style>
+				
+	</head>
+	
+		
+	<body>
+	
+		<div align="center">
+			
+			<h1> CLASES Y OBJETOS </h1>
+			
+			<h2 style="color:blue;"> DEFINICIÓN DE ATRIBUTOS PUBLICOS EN LA CLASE </h2>
+
+
+			<div id="pantalla"></div>
+
+
+
+			<script type="text/javascript">
+			
+				class Botella {
+					
+					// FORMA HABITUAL ... propiedad (no tiene tipo) = valor (opcional);
+					
+					material = "CRISTAL";	// EAGERLY DECLARATION - INICIALIZACIÓN TEMPRANA.
+					
+					// ERROR: NO PUEDE HACERSE USO DE this AL DECLARAR LA PROPIEDAD:
+					//
+					//	this.capacidad = 100;
+					//					
+					capacidad;			// PROPIEDAD SIN INICIALIZAR (lo hará el constructor).
+					
+					
+					// *** RECORDAR QUE EL CONTENIDO DE TODA CLASE DEBE ESTAR ENCAPSULADO, LUEGO
+					//		LA DECLARACIÓN DE ATRIBUTOS PÚBLICOS ES SIMPLEMENTE UN ERROR ***
+					
+					
+					// MUY IMPORTANTE:
+					// EL CONSTRUCTOR EN JAVA SE DEFINE CON EL NOMBRE DE LA CLASE, PERO
+					//		EN JAVASCRIPT REQUIERE DE LA PALABRA constructor (sólo 1).
+						
+					constructor(material) {
+						
+						alert("CONSTRUCTOR 1 - MATERIAL SELECCIONADO ... " + material);
+						
+						this.material = material;
+						
+						// EL PROPIO CONSTRUCTOR PUEDE SER UTILIZADO PARA DEFINIR LOS CAMPOS
+						// DE LA CLASE SI LA PROPIEDAD A LA QUE HACE REFERENCIA NO HA SIDO
+						// DECLARADA EN LA CLASE (lo tradicional es declararlas externamente
+						// y luego inicializarlas en él ... como se ha hecho con material).
+						
+						this.capacidad = 100;
+						
+						// this.color = "VERDE"; 	// CREARÍA E INICIALIZARÁ LA PROPIEDAD color,
+													// LA CUAL NO ESTÁ DECLARADA A NIVEL GLOBAL.
+					}
+
+					
+					// ¿NO SE ADMITE SOBRECARGA DE CONSTRUCTORES EN JAVASCRIPT?
+					//		PUES NO, NO HAY SOBRECARGA NI DE MÉTODOS NI DE CONSTRUCTORES
+
+					/*
+					constructor(material, capacidad) {						
+						alert("CONSTRUCTOR 2 - MATERIAL Y CAPACIDAD);						
+						this.material = material;						
+						this.capacidad = 100;
+					}
+					*/
+
+					
+					toString() {
+						
+						// ES OBLIGATORIO EL USO DE this PARA PODER ACCEDER A LAS
+						//	PROPIEDADES DEL OBJETO, INCLUSO CUANDO NO HAY AMBIGÜEDAD
+						// 	COMO SERÍA EL CASO DE UN GETTER O SETTER this.x = x
+						//	ALGO QUE EN JAVA NO SUCEDE (su compilador sabe distinguir
+						//	qué propiedad estamos utilizando)
+						
+						// SI NO SE INDICA this OBTENDREMOS UN ERROR EN LA CONSOLA
+						//	DE DEPURACIÓN DEL NAVEGADOR:
+							
+						// Uncaught ReferenceError: material is not defined
+						
+						return "MATERIAL = " + this.material + " - " +
+									"CAPACIDAD = " + this.capacidad;
+						
+					}
+					
+				}
+			
+				
+				////////////////////// PRUEBAS ////////////////////////
+				
+				
+				// INSTANCIACIÓN - CREACIÓN Y USO DEL OBJETO:
+				
+				let botella = new Botella("PLASTICO");
+								
+				alert("MATERIAL = " + botella.material);
+				alert("CAPACIDAD = " + botella.capacidad);				
+				
+				// ESTADO DEL OBJETO:
+				alert("BOTELLA toString() ... " + botella);
+				
+				with(document.getElementById("pantalla")) {				
+					innerHTML = "BOTELLA DE <span>" + botella.material + "</span>";		
+					
+					
+					// innerHTML += " Y CAPACIDAD <span>" + botella.capacidad + "</span>";
+					//					
+					// INCRUSTAR CÓDIGO JAVASCRIPT SOBRE HTML ( evaluación de variables ${} )
+					//		NOS PERMITE NO TENER QUE ESTAR CONCATENANDO CADENAS:
+					//
+					innerHTML += ` Y CAPACIDAD <span> ${botella.capacidad} </span>`;
+					
+				}
+				
+			</script>
+			
+		</div>
+		
+	</body>
+	
+</html>

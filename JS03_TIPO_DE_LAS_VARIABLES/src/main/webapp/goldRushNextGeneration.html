@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+		
+		
+		
+		
+		<style type="text/css">
+		
+			span {
+				background-color:brown;
+				border:2px solid black;
+				border-radius:25px;
+				padding:15px;
+				margin:10px;
+				font-size:30px;
+				opacity:0.2;
+				display:inline-block;
+				transition-duration:5s;						
+			}
+			
+		</style>
+		
+		
+		<script type="text/javascript">
+		
+			const LONGITUD_DEFECTO = 5;
+			const MINIMA_LONGITUD = LONGITUD_DEFECTO;
+			const MINIMO_ORO = 1;
+			
+			const RETARDO = 2000;
+		
+		
+			// 1. crear campo		[-, -, -, -, -, -, -, -, -, -]	-  tierra/barro.
+			
+			// 2. colocar oro x3	[-, -, *, -, -, *, -, -, -, *]	* oro : aleatoriamente
+		
+			// 3. excavar			[-, -, -, -, -, -, -, -, -, -]	... [*,*,*]
+			
+			
+			function f_validarLongitud(longitud) {
+				
+				// isNaN("a") 		// true  ... no se puede ver/convertir a número
+				// isNaN("123") 	// false ... se puede ver como número
+				
+				
+				if(longitud) { // SI LONGITUD NO ES NULL ... true
+				
+					if (isNaN(longitud)) {
+						alert("ERROR, LA LONGITUD DEBE SER NUMÉRICA");
+						return false;
+					}				
+				
+					if(longitud < MINIMA_LONGITUD) {
+						alert("ERROR, LA MÍNIMA LONGITUD ES ... " + MINIMA_LONGITUD)
+						return false;
+					}
+				
+				} 
+				
+				return true;
+				
+			}
+			
+			
+		
+			function f_crearCampo() {
+				
+				var longitud = document.getElementById("cajaLongitud").value;
+				
+			
+				if(! longitud) {
+					// NO INDICAS LONGITUD
+					alert("COMO NO ME INDICAS LA LONGITUD, SERÁ 5 POR DEFECTO")
+					longitud = 5;	// SI NO INDICAS LONGITUD, QUE SEA POR DEFECTO 10.
+					
+				} else {
+				
+					// VALIDAR EL VALOR DEL PARÁMETRO longitud:
+					if(! f_validarLongitud(longitud)) {
+						
+						return;
+					}
+				
+				}
+				
+				//const campo = ["-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]; 
+			
+				alert("OK, LA LONGITUD VA A SER ... " + longitud);
+				
+				// CREAR EL CAMPO VACÍO (longitud 0)
+				var campo = new Array();
+				
+				
+				// RELLENARLO CON TIERRA ... x10 (-)				
+				for(let i=0; i<longitud; i++) {
+					
+					campo.push("💩");
+					
+					// EMOTICONES EN: https://emojipedia.org/pile-of-poo
+				}
+				
+				
+				// DEVOLVERLO:
+				return campo;
+				
+			}
+			
+			
+			
+			function f_visualizarCampo(campo, retardo) {
+				
+				//alert("CAMPO: \n" + campo);
+				
+				
+				const mostrarCallBack = () => {
+
+					var cajaPantalla = document.querySelector("#pantalla");	// SI ES POR id COLOCAR EL #.
+					
+					// RESET.
+					cajaPantalla.innerHTML = ""; // BORRAR SU CONTENIDO ANTERIOR HACIENDO QUE VALGA CADENA VACÍA.
+					
+					for(trozo of campo) {	// BUCLE FOR TIPO of (RECORRER UN ITERABLE COMO ES UN ARRAY)
+						//alert(trozo);
+						cajaPantalla.innerHTML += "<span>" + trozo + "</span>";
+					}
+					
+					
+					/////
+					
+					
+					if(retardo) {
+						
+						var spanes = document.getElementsByTagName("span");
+					
+						for(let elSpan of spanes) {
+							
+							//alert("EL SPAN ... " + elSpan.innerText);
+							
+							with(elSpan) {
+							
+								if(innerText === "💰") {
+									//style.fontSize="60px";
+									style.opacity="1";
+									style.rotate="720deg";
+								}
+							
+							}
+						}
+					
+					}
+					
+					
+				};
+				
+				
+				
+				if(retardo == null) {
+				
+					mostrarCallBack();
+					
+				} else {
+										
+					setTimeout(mostrarCallBack, retardo);					
+					
+				}
+				
+			}
+			
+
+			
+			
+			function f_colocarOro(campo, cuantoOro) {
+				
+				
+				if(! cuantoOro) {
+					alert("COMO NO ME INDICAS CUANTO ORO, SERÁN 3 UNIDADES");
+					cuantoOro = 3;
+					
+				} else {
+					
+					if(cuantoOro < MINIMO_ORO) {
+						alert("ERROR: COMO MÍNIMO DEBE HABER 1 PEPITA DE ORO");
+						return false;					
+					}
+					
+					if(campo.length < cuantoOro) {
+						alert("ERROR: NO PUEDE HABER MÁS ORO QUE LONGITUD DE CAMPO \n" +
+								"longitud = " + campo.length + " \t cuantoOro = " + cuantoOro);
+						
+						return false;											
+					}
+					
+				}
+				
+				for(let i=0; i<cuantoOro; /* NO INCREMENTES AQUÍ */) {
+					
+					const posicionAleatoria = parseInt(Math.random() * campo.length); // [0..9]
+					
+					//alert(posicionAleatoria);
+					
+					if(campo[posicionAleatoria] === "💩") {
+						campo[posicionAleatoria] = "💰";
+						i++;
+					}
+					
+				}
+				
+				return true;
+				
+			}
+			
+			
+			function f_excavar() {
+				
+				const campo = f_crearCampo();
+				
+				//f_visualizarCampo(campo, null);
+				f_visualizarCampo(campo);					// SÓLO TIERRA.
+				
+				
+				if(f_colocarOro(campo)) {					// COLOCAR ORO - NO INDICAMOS CUÁNTO (3 por defecto).
+					return;
+				}						
+				
+				
+				//f_visualizarCampo(campo);					// TIERRA Y ORO SIN RETARDO.
+				f_visualizarCampo(campo, RETARDO);			// TIERRA Y ORO CON RETARDO.				
+				
+			}
+			
+			
+			
+			function f_iniciar() {
+				
+				const campo = f_crearCampo();
+				
+				if(!campo) {					
+					return;
+				}
+				
+				f_visualizarCampo(campo);					// SÓLO TIERRA.
+				return campo;
+			}
+			
+			
+			function f_buscar() {
+				const campo = f_iniciar();
+				
+				if(!campo) {
+					alert("ERROR: NO SE HA PODIDO CREAR EL CAMPO");
+					return;
+				}
+				
+				const cuantoOro = document.getElementById("cajaCuantoOro").value;
+				
+				if (! f_colocarOro(campo, cuantoOro)) {
+					return;
+				}
+				
+				f_visualizarCampo(campo, RETARDO);
+			}
+			
+			
+		</script>
+		
+		
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> GOLD RUSH </h1>
+
+			<br/><br/><br/>
+
+			<div id="pantalla"></div>
+
+
+			<br/><br/>
+
+			<label> LONGITUD DEL CAMPO: </label>
+			<input type="text" id="cajaLongitud" value="" maxlength="2" size="2"
+						placeholder="xx" autofocus/> 
+
+
+			<br/><br/>
+
+
+			<label> CUANTO ORO: </label>
+			<input type="text" id="cajaCuantoOro" maxlength="2" size="2"
+						placeholder="xx"/> 
+
+
+
+			<br/><br/>
+			
+			
+			<script type="text/javascript">
+				f_iniciar();
+			</script>
+		
+			<button onclick="f_buscar();">
+				BUSCAR
+			</button>
+
+		</div>
+		
+		
+		
+		<!-- 
+		
+		<script type="text/javascript">
+		
+			/// EJECUCIÓN AL CARGAR /// 
+			
+			/*
+			const campo = f_crearCampo();
+			f_visualizarCampo(campo);
+			*/
+			
+			
+			/*
+			const campo = f_crearCampo();
+				
+			f_visualizarCampo(campo);					// SÓLO TIERRA
+			
+			f_colocarOro(campo);						// COLOCAR ORO
+			
+			
+			//f_visualizarCampo(campo);					// TIERRA Y ORO SIN RETARDO
+			f_visualizarCampo(campo, 2000);				// TIERRA Y ORO CON RETARDO
+			*/
+			
+			// ARRANCAR EL PROGRAMA.
+			f_excavar();
+			
+		</script>
+		
+		-->
+		
+	</body>
+
+</html>
+
+
+
+<!-- 
+
+				const longitudMinima = 5;
+				const longitudMaxima = 20;
+				
+				if(longitud<longitudMinima || longitud>longitudMaxima) {
+					
+					alert("EL CAMPO REQUIERE UNA LONGITUD ENTRE " + longitudMinima +
+							"Y " + longitudMaxima + " POSICIONES");
+					
+					return;
+					
+				}
+
+
+ -->

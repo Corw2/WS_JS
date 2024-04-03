@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> TIRADAS DADO </h1>
+
+
+			<br/><br/>
+
+
+			<script type="text/javascript">
+				
+				// GENERAR VECES ALEATORIAMENTE:
+			
+				//var veces = 3;	//`${veces}` ... INYECCIÓN DE JAVASCRIPT EN CÓDIGO HTML
+				
+				const CARAS_DADO = 6;
+				
+				const VECES = parseInt(Math.random() * CARAS_DADO + 1); // [0..5] + 1 => [1..6]
+				
+				document.write("!!! TIRAR " + VECES + " VECES !!! <br/><br/>");
+				
+			</script>
+
+
+			<br/><br/>
+
+
+			<script type="text/javascript">
+			
+				/*
+				document.write(`<p>TIRA EL DADO ${veces}
+									 VECES Y SUMA LO QUE VAYA SALIENDO.</p>`);
+				*/
+				
+				/*
+				document.write("<p>TIRA EL DADO " + `${veces}` + 
+				 						" VECES Y SUMA LO QUE VAYA SALIENDO.</p>");
+				*/
+				
+				var sumaTotal = 0;
+				
+				for(let i=1; i<=VECES; i++) {
+					
+					let numero = parseInt(Math.random() * CARAS_DADO + 1);		// [1 .. CARAS_DADO]  // [1..6]
+					
+					valor = numero;
+					
+					if(numero %2 == 0) { // DIVISION ENTERA (queda 0_par o 1_impar) ---> si %2 == 0 ... ES PAR		si %2 != 0 ... ES IMPAR.
+						
+						//valor = valor * 2;
+						
+						valor *= 2;	// LOS PARES SUMAN DOBLE. LOS IMPARES NORMAL.
+										//	i == 1 ---> IMPAR 	---> VALOR = 1*1 = 1										
+										//  i == 2 ---> PAR 	---> VALOR = 2*2 = 4
+										//  i == 3 ---> IMPAR 	---> VALOR = 3*1 = 3
+										//  i == 4 ---> PAR 	---> VALOR = 4*2 = 8
+						document.write("<p style='color:red'> (" + i + ") ... HA SALIDO EL ... " + numero +
+											" SUMA : " + valor + "</p>");
+										
+					} else {
+						document.write("<p style='color:blue'> (" + i + ") ... HA SALIDO EL ... " + numero +
+								" SUMA : " + valor + "</p>");
+					}
+					
+				
+					sumaTotal += valor;
+				}
+				
+			</script>
+
+
+			<br/><br/>
+
+
+			<script type="text/javascript">
+			
+				document.write("<div style='color:blue; font-size:2cm;'> SUMA TOTAL ... " +
+									sumaTotal + "</div>");
+			
+				document.write("<br/><br/>");
+				
+				document.write("FIN DE JUEGO ");
+			
+			</script>
+
+
+		</div>
+		
+	</body>
+
+</html>

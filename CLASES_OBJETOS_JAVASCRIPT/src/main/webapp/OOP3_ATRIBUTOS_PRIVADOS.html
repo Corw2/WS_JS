@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+		
+		<style type="text/css">
+			#pantalla {
+				color:green;
+				font-size:22px;
+				font-weight:bolder;
+				width:900px;
+				padding:20px;
+				border:3px solid red;
+				border-radius:25px;
+				background-color:cyan;
+			}
+
+
+			#pantallaHACK {
+				color:red;
+				font-size:22px;
+				font-weight:bolder;
+				width:900px;
+				padding:20px;
+				border:3px solid red;
+				border-radius:25px;
+				background-color:yellow;
+			}
+		
+		</style>
+				
+	</head>
+	
+
+		
+	<body>
+	
+		<div align="center">
+			
+			<h1> CLASES Y OBJETOS </h1>
+			
+			<h2 style="color:blue;"> DEFINICIÓN DE ATRIBUTOS PRIVADOS EN LA CLASE </h2>
+
+
+			<div id="pantalla"></div>
+
+			<br/><br/>
+
+			<div id="pantallaHACK"> !! HACKING !! <br/><br/> </div>
+
+
+
+			<script type="text/javascript">
+			
+				class Tarjeta {
+					
+					titular;	// ATRIBUTO PÚBLICO.
+					#pin;		// ATRIBUTO PRIVADO (lleva la almohadilla) ... #XXX
+					
+					
+					// CONSTRUCTOR:
+					constructor(titular) {						
+						this.titular = titular;						
+						this.#pin = parseInt(Math.random() * 10000) + 1; 						
+					}
+					
+					
+					// GETTERS:
+					consultarTitular() {
+						return this.titular;
+					}
+
+					/*	DEVUELVE EL VALOR DEL ATRIBUTO PRIVADO.
+					consultarPin() {
+						return this.pin;
+					}
+					*/
+					
+					toString() {
+						return "TARJETA - Titular: " + this.titular;
+					}
+					
+					
+					//////////////////////////////////////////////////////////////////////
+					
+					// EQUIVALENTE AL ANTERIOR MÉTODO GETTER: consultarPin():
+					//	
+					// HACKEO (método público que accede a un atributo privado de la clase ...
+					//				en el interior de la clase NO HAY ENCAPSULACIÓN, de forma
+					//				que los miembros de la misma - propiedades, constructores
+					//				y métodos, se ven los unos a los otros sin ningún problema)
+					//
+					//	LA ENCAPSULACIÓN ES "DE PUERTAS DE CASA HACIA AFUERA":
+						
+					hackToString() {
+						return this + " ... PIN = " + this.#pin; // NO OLVIDAR EL # del this.
+					}
+					
+				}
+			
+			</script>			
+
+						
+						
+			<script type="text/javascript">
+			
+				/////////////////////// PRUEBAS ///////////////////////////
+			
+				const tarjeta1 = new Tarjeta("LUIS");			
+				const tarjeta2 = new Tarjeta("JUAN");
+								
+				alert("TITULAR T1 - OK, público ... " + tarjeta1.titular);
+				alert("TITULAR T2 - OK, público ... " + tarjeta2.titular);
+				
+				alert("PIN T1 - no accesible, es privado ... " + tarjeta1.pin);
+				alert("PIN T2 - no accesible, es privado... " + tarjeta2.pin);
+				
+
+				///////////////////////////////////////////////////////////////
+				
+
+				// TOSTRING ... se ha programado para que sólo indique el titular:
+				alert(tarjeta1);
+				alert(tarjeta2);
+
+				
+				with (document.getElementById("pantalla")) {
+					
+					innerHTML = "T1 - TITULAR: " + tarjeta1.titular + " - PIN (privado): " + tarjeta1.pin;
+					
+					innerHTML += "<br/><br/>";
+					
+					innerHTML += "T2 - TITULAR: " + tarjeta2.titular + " - PIN (privado): " + tarjeta2.pin;
+				}
+				
+				
+				
+				
+				//////////////////////////// HACKING //////////////////////////////////
+
+				
+				alert("HACKING T1: " + tarjeta1.hackToString());
+				alert("HACKING T2: " + tarjeta2.hackToString());
+				
+
+				with (document.getElementById("pantallaHACK")) {
+					
+					innerHTML += "T1: " + tarjeta1.hackToString();
+					
+					innerHTML += "<br/><br/>";
+					
+					innerHTML += "T2: " + tarjeta2.hackToString();
+				}
+				
+			</script>			
+			
+		</div>
+		
+	</body>
+	
+</html>

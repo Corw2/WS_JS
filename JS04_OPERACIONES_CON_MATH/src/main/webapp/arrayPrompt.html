@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			
+			<script type="text/javascript">
+			
+				// CLIENTE QUE ENVIA DATOS AL SERVIDOR Y ESOS DATOS LLEGAN A DICHO SERVIDOR HAY QUE HACER:
+				
+					
+				//	1. CAPTURA DE DATOS.
+				
+				//		2. CONVERSIÓN DE DATOS ("180" cadena de texto -- lo pasamos a --> 180 numérico).
+				
+				//			3. VALIDACIÓN DE DATOS (si es 180 es tu edad ... PUES NO ME LO CREO).
+			
+				
+				
+				/*
+				const cuantos = parseInt( prompt("¿CUANTOS QUIERES?") );			
+				const arrayNumeros = new Array(cuantos);				
+				alert(arrayNumeros.length);
+				*/
+				
+				// RESERVA LONGITUD PARA EL ARRAY (habría que validar que el usuario introduce algo adecuado).
+				
+				const arrayNumeros = new Array( parseInt( prompt("¿CUÁNTOS QUIERES?") ) );
+				
+				
+				for(let i=0; i<arrayNumeros.length; i++) {
+					
+					let aleatorio = parseInt( Math.random() * arrayNumeros.length ) + 1;
+															
+					arrayNumeros[i] = aleatorio;
+					
+					// SI LO DISEÑAS DE FORMA QUE EL PROMPT DE UN TAMAÑO INICIAL AL ARRAY:
+					//	
+					// NO USES push() PORQUE TE AÑADE EL ELEMENTO AL FINAL (POR LA DERECHA) Y EL TAMAÑO DEL
+					//	ARRAY CRECE HASTA EL INFINITO (LA CONDICIÓN BOOLEAN DE RUPTURA DEL FOR NO SE 
+					//	ALCANZA NUNCA i<arrayNumeros.length ... PORQUE EL length NO DEJA DE CRECER).
+					
+				}
+
+				
+				alert(arrayNumeros);
+				
+			</script>
+			
+			
+			
+			
+			<script type="text/javascript">
+			
+				/*
+				
+				//const numbers = [1, 2, 3, 4];
+				//alert(numbers);
+				
+				
+				// 0.0000000000 - 0.5		- 0.5000	(-0,5)
+				
+				// 0.9999999999				+ 0.49999   (+0.5)
+				
+				
+				// SECUENCIA ALEATORIA BASADA EN 4 NUMEROS (1,2,3 o el 4).
+				alert( [1,2,3,4].sort(() => Math.random() - 0.5) );
+			
+				*/
+				
+			</script>			
+
+		</div>
+		
+	</body>
+
+</html>

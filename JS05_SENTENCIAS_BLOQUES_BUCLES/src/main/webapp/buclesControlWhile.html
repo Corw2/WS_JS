@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+		
+		<style type="text/css">
+		
+			label {
+				color:olive;
+				font-size:50px;
+				font-weight:bolder;
+			}
+			
+			#pantalla {
+				margin-top:100px;
+				width:800px;
+				color:red;
+				font-size:22px;
+				border:3px solid red;
+				border-radius:25px;
+				background-color:yellow;
+				padding:30px;
+			}
+				
+		</style>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+		
+		
+			<h1 id="pantalla"></h1>
+						
+						
+						
+			<script type="text/javascript">
+				
+				/*
+				
+				// DECLARAR LAS VARIABLES:
+					contador_1 = 1; 			// sin var ni let debes darle una valor al declararla ... EAGERLY)
+				
+				var contador_2;
+				
+				let contador_3;
+				
+				
+				// INICIALIZARLAS, DARLES UN VALOR (null también es un valor);				
+				
+				contador_2 = 2;
+				contador_3 = 3;
+				
+				*/
+				
+			</script>			
+
+
+			<!-- CAMBIAMOS A OTRO BLOQUE DE SCRIPT -->
+
+
+			<script type="text/javascript">
+
+				/*
+			
+				alert("CONTADOR 1: " + contador_1);
+				alert("CONTADOR 2: " + contador_2);
+				alert("CONTADOR 3: " + contador_3);
+			
+				*/
+				
+			</script>
+			
+			
+			<!-- CAMBIAMOS A OTRO BLOQUE DE SCRIPT -->			
+			
+			
+			<script type="text/javascript">
+			
+				const f_conversorObjeto = 
+
+						(numeros) =>  {
+										// RECORRER EL ARRAY RECIBIDO COMO PARÁMETRO DE ENTRADA A LA
+										//	ESTA FUNCIÓN ARROW Y CREAR + DEVOLVER, UN OBJETO QUE
+										//	CONTENGA DICHO ARRAY DE NÚMEROS, CUÁNTOS TIENE Y LA SUMA
+										//	DE SU VALOR NUMÉRICO.
+
+										const objeto = {
+															tuNumeros: numeros,
+															cuantosNumeros: numeros.length,
+															valorTotal: numeros.reduce( (valor, total) => valor + total, 0)
+														};
+										
+										
+										return objeto;
+	
+									};
+						
+			</script>
+			
+			
+			<script type="text/javascript">
+			
+			const f_imprimirObjeto = (objeto, nombreCapa) => {
+				
+				const laCapa = document.getElementById(nombreCapa);
+				
+				for (propiedad in objeto) {
+					laCapa.innerHTML += "<p>" + propiedad + ":\t\t <label>" + objeto[propiedad] + "<label></p>";
+				}				
+				
+			};
+			
+			
+			</script>			
+			
+			
+			
+			<script type="text/javascript">
+			
+				/* 			while(contador >= 0) {
+								alert(contador--);
+							}
+				*/				
+
+			
+				/*
+				
+				// SIEMPRE ES EL MISMO NÚMERO:
+				
+					const PROHIBIDO = 6;
+				
+					var dado = parseInt(Math.random() * PROHIBIDO) + 1;	// [1..6]
+					
+					while (dado != PROHIBIDO) {
+						alert(dado);					
+					}
+
+				*/
+		
+				
+				const PROHIBIDO = 6;
+				
+				const numeros = [];
+				
+				var dado;
+				
+				
+				// UN NÚMERO ALEATORIO EN CADA VUELTA DEL BUCLE:
+				while ( (dado = parseInt(Math.random() * PROHIBIDO) + 1) != PROHIBIDO ) {	// [1..6]
+				
+					//alert(dado);
+				
+					numeros.push(dado);
+										
+				}
+				
+				
+				//alert("SE TERMINÓ ... HA SALIDO EL PROHIBIDO = " + dado);
+				
+				const objeto = f_conversorObjeto(numeros);
+				
+				//alert("OBJETO ... " + objeto);
+				
+				/*
+				alert("TUS NUMEROS ... " + objeto.tuNumeros);
+				alert("CUANTOS NUMEROS ... " + objeto.cuantosNumeros);
+				alert("VALOR TOTAL ... " + objeto.valorTotal);
+				*/
+				
+				
+				f_imprimirObjeto(objeto, "pantalla");
+				
+			</script>
+
+			
+		</div>
+		
+	</body>
+
+</html>

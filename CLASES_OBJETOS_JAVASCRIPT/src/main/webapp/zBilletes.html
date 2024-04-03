@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+			
+				class Billete {
+										
+					// ATRIBUTOS:
+						
+					valor;
+					color;
+					
+					
+					
+					// CONSTRUCTOR (no hay sobrecarga)
+					
+					constructor(valor, color) {						
+						alert("SE HA LLAMADO AL CONSTRUCTOR: " + valor + " - " + color);						
+						this.valor = valor;
+						this.color = color;
+					}
+					
+					
+					
+					// MÉTODOS
+					
+					imprimir() {
+						return this.toString(); // NO TE OLVIDES DEL this.
+					}
+					
+					
+					toString() {
+						return "BILLETE: \n\n\t" + "VALOR: " + this.valor + "\n\t" +
+									"COLOR: " + this.color;	
+					}
+					
+				}
+						
+			</script>
+			
+			
+			<script type="text/javascript">
+
+				const billete500 = new Billete(500,"MORADO");
+				const billete200 = new Billete(200,"AMARILLO");
+			
+				alert(billete500);
+				alert(billete200);
+			
+			</script>
+
+		</div>
+		
+	</body>
+
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+		
+		<style type="text/css">
+			
+			body {
+				color:white;
+				background-color:black;
+			}
+			
+			span {
+				margin:20px;
+			}
+			
+			
+			#pantalla {
+				font-size:22px;
+			}
+		
+		</style>
+		
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			
+			<div id="pantalla"></div>
+
+			
+			<script type="text/javascript">
+			
+				const capaPantalla = document.getElementById("pantalla");
+			
+
+			
+				for (let i=1; i<=10; i++) {
+					capaPantalla.innerHTML += "<span>" + i + "</span>"; 					
+				}
+				
+
+				
+				
+				capaPantalla.innerHTML += "<br/><br/>";
+				
+				
+				
+				
+				const caja = {
+								material:"CARTON",
+								forma:"CUADRADA",
+								uso:"REUTILIZABLE",
+								color:"AZUL"						
+				};
+				
+			
+				/*
+				
+				alert("CAJA ... " + caja.material + " " + caja.color);
+				
+				alert("CAJA ... " + caja["material"] + " " + caja["color"]);
+			
+			
+				for(propiedad in caja) {
+					
+					alert(propiedad + " -> " + caja[propiedad]);
+					
+				}
+				
+				*/
+				
+				for(propiedad in caja) {
+					
+					capaPantalla.innerHTML += "<p style='color:blue;'>" + propiedad + " ... " + caja[propiedad] + "</p>";					
+					
+				}
+				
+				
+				
+				
+				
+				
+				/*
+				
+				const persona = {
+						
+						nombre:"LUIS",
+						
+						perro : {
+									nombre:"CANCERBERO"
+								}
+				};
+				
+				
+				alert("NOMBRE DE LA PERSONA ... " + persona.nombre);
+				
+				alert("NOMBRE DEL PERRO DE LA PERSONA ... " + persona.perro.nombre);
+				
+				alert("NOMBRE DEL PERRO DE LA PERSONA ... " + persona["perro"].nombre);
+				
+				*/
+				
+				
+				// ITERABLE: 
+				const frutas = ["PIÑA", "MANZANA", "COCO", "BANANA", "MELON", "PERA", "MANDARINA"];
+				
+				for(let i=0; i<frutas.length; i++) {
+					capaPantalla.innerHTML += "<p style='color:orange;'>" + frutas[i] + "</p>";
+				}
+					
+				
+				for(posicion in frutas) {
+					
+					//alert("FOR-IN ... POSICION: " + posicion + "\n" + 
+					//			"FRUTAS[POSICION]: " + frutas[posicion]);
+					
+					capaPantalla.innerHTML += "<p style='color:red;'>" + frutas[posicion] + "</p>";
+					
+				}
+				
+				
+				for(fruta of frutas) {
+					capaPantalla.innerHTML += "<p style='color:olive;'>" + fruta + "</p>";
+				}
+				
+				
+				
+				// 1) FUNCIONA ESTÁNDAR ... LA FORMA NORMAL.
+				function f_fruteria(fruta) {
+					capaPantalla.innerHTML += "<p style='color:cyan;'>" + fruta + "</p>";
+					return "DISFRUTA DE LA BABANA";
+				}
+				
+				
+				// 2) FOR-EACH CON CALLBACK (ES UNA LAMBDA)
+				frutas.forEach( fruta => capaPantalla.innerHTML += "<p style='color:cyan;'>" + fruta + "</p>");
+			
+								
+				
+				// 3) DEFINIR LA LAMBDA EN UNA CONSTANTE
+				const lambda = fruta => capaPantalla.innerHTML += "<p style='color:cyan;'>" + fruta + "</p>"
+				// PASARSELA A LA FUNCIÓN forEach DEL ARRAY.
+				frutas.forEach(lambda);
+				
+				
+				//4) CON MAPA
+				frutas.map( (fruta,index) => capaPantalla.innerHTML += 
+													"<p style='color:yellow;'>" +
+															index + " ..... " +  fruta + "</p>");
+				
+				
+				
+				///////////////////////////////////////////////////////////////////			
+
+				
+				let x = 747;
+				
+				alert(x);
+				
+				
+				
+				x = f_fruteria("");
+				
+				alert(x);
+				
+				
+				
+				x = f_fruteria;
+								
+				alert(x);				
+				
+				// SACA 1 POR 1 LOS ELEMENTOS DEL ARRAY frutas Y SE LOS PASA COMO PARÁMETRO DE
+				//		ENTRADA A LA FUNCIÓN CALLBACK QUE LE ESTAMOS DANDO AL .forEach SIENDO
+				//			DICHA CALLBACK LA FUNCIÓN f_fruteria(fruta) QUE HEMOS CREADO ANTES.
+				
+				
+				frutas.forEach(f_fruteria);	// SIN PARÉNTESIS !!!
+				
+				/* 
+				// ESTO ES LO QUE QUIERE LA MÁQUINA:
+					
+					function f_fruteria(fruta) {
+						capaPantalla.innerHTML += "<p style='color:cyan;'>" + fruta + "</p>";
+					return "DISFRUTA DE LA BABANA";
+				}					
+					
+					
+				*/		
+				
+				
+				
+				// SI HACES ( f_fruteria() ) COMO PARÁMETRO DE ENTRADA AL FOR-EACH O CALLBACK,
+				//	DARÁ EL SIGUIENTE ERROR PORQUE EFECTIVAMENTE UN STRING NO ES UNA FUNCIÓN ...
+				//		... NO EJECUTES LA FUNCIÓN, NO PONGAS LOS PARÉNTESIS DE DICHA FUNCIÓN.
+				//
+				// 	Uncaught TypeError: "DISFRUTA DE LA BABANA" is not a function
+				//		frutas.forEach( "DISFRUTA DE LA BABANA" );
+				
+				
+			</script>
+			
+
+		</div>
+		
+	</body>
+
+</html>

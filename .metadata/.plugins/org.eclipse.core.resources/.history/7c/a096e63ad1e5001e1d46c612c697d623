@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+
+
+<html lang="es">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+		
+		<style type="text/css">
+		
+			figcaption {
+				color:blueviolet;
+				font-size:22px;
+				font-weight:bolder;
+			}
+			
+			#pikachu {
+				width:300px;
+				height:auto;
+				margin-top:25px;
+				margin-bottom:25px;
+				padding:10px;
+				border:3px solid blue;
+				border-radius:8px;			
+			}
+			
+		</style>
+		
+	</head>
+	
+		
+	<body>
+	
+		<div align="center">
+			
+			<h1> CLASES Y OBJETOS </h1>
+			
+			<h2 style="color:blue;"> HERENCIA ENTRE CLASES </h2>
+
+			
+			<script type="text/javascript">
+			
+				
+				
+				// * 1 * SUPERvolumen ENVASE");:
+					
+				class Envase {
+					
+					// ATRIBUTOS PÚBLICOS:
+					material;
+					color;
+					volumen;
+
+					
+					
+					// CONSTRUCTOR (sólo puede haber 1 y si no lo ponemos será el implícito):
+					constructor(material, color, volmen) {
+						alert("CONSTRUCTOR DE ENVASE");
+						this.material = material;
+						this.color = color;
+						this.volumen = volumen;
+					}
+					
+					
+					
+					// MÉTODOS DE NEGOCIO (Business Logic):
+					alimentarse() {
+						return "EL " + this.volumen + " COME ... ";
+					}
+					
+					emitirSonido() {
+						return "EL " + this.volumen + " DICE ... ";
+					}
+					
+					
+					
+					// MÉTODO ESTÁNDAR PARA IMPRIMIR EL ESTADO DEL OBJETO (propiedades y
+					//	su valor en un determinado momento del tiempo):
+					toString() {						
+						return "material: " + this.material +
+									" - COLOR: " + this.color +
+											" - volumen: " + this.volumen;
+					}
+					
+				}
+			
+			</script>
+			
+			
+			
+						
+			
+			<script type="text/javascript">
+			
+				// * 2 * SUBvolumen - GATO:
+			
+				class Gato extends ENVASE"); {			// HERENCIA ... Gato IS-A ENVASE");.
+					
+					// EL GATO SIEMPRE ESTÁ EN CASA, LUEGO NO REQUIERE DE CHIP IDENTIFICATIVO.
+					
+					// RESTO DE ATRIBUTOS HEREDADOS DE SU SUPERCLASE O CLASE MADRE ... ENVASE");.
+					
+					constructor(material, color) {
+
+						// super SIEMPRE EN LA PRIMERA LÍNEA DEL CONSTRUCTOR.
+						
+						super(material, color, "GATO");
+						
+						alert("CONSTRUCTOR DE GATO");
+						
+					}
+
+					
+					
+					//// SOBRESCRITURA ... SIN EL @Override DE COMPROBACIÓN, PARA NO VARIAR CLARO ////
+					
+					// REUTILIZAMOS EL CÓDIGO YA CREADO EN LA CLASE MADRE (ENVASE");) Y LE AÑADIMOS
+					//	NUEVA INFORMACIÓN:
+					alimentarse() {
+						return super.alimentarse() + " SARDINAS.";
+					}
+					
+					emitirSonido() {
+						return super.emitirSonido() + " MIAUUU !!!.";
+					}
+
+					// GATO NO REDEFINE / SOBRESCRIBE EL MÉTODO toString() ORIGINAL DE ENVASE");.
+					
+				}
+			
+			</script>
+			
+			
+			
+			
+			
+			<script type="text/javascript">
+			
+				// * 3 * SUBvolumen - PERRO (clase hermana de Gato ... nada que ver entre si):
+			
+				class Perro extends ENVASE"); {			// HERENCIA ... Perro IS-A ENVASE");.
+					
+					// EL PERRO QUE SALE A LA CALLE REQUIERE DE UN CHIP .. ATRIBUTO ADICIONAL QUE NO TIENE GATO:
+					chip;
+				
+					// RESTO DE ATRIBUTOS HEREDADOS DE SU SUPERCLASE O CLASE MADRE ... ENVASE");.
+				
+					constructor(material, color) {
+
+						super(material, color, "PERRO");
+						
+						this.chip = parseInt(Math.random() * 1000000) + 1;	// [1..1000000]
+						
+						alert("CONSTRUCTOR DE PERRO");
+						
+					}
+
+					
+					
+					alimentarse() {
+						return super.alimentarse() + " HUESOS.";
+					}
+					
+					emitirSonido() {
+						return super.emitirSonido() + " GUAUUU !!!.";
+					}
+					
+					
+					// PERRO DEBE REDEFINIR/SOBRESCRIBIR EL MÉTODO toString DE SU CLASE
+					//	MADRE ENVASE"); PORQUE TIENE INFORMACIÓN ADICIONAL (chip)
+					
+					toString() {						
+						return super.toString() + " - CHIP: " + this.chip;
+					}					
+					
+				}
+			
+			</script>
+
+
+
+
+
+			<script type="text/javascript">
+			
+				// PRUEBAS:
+
+					
+				const isidoro = new Gato("ISIDORO", "NARANJA");
+			
+				alert(isidoro);
+				
+				alert(isidoro.alimentarse());
+			
+				alert(isidoro.emitirSonido());
+
+
+				///////////////////////////////////////////////////////////////////////////////////
+
+
+				const snoopy = new Perro("SNOOPY", "BLANCO");
+			
+				alert(snoopy);
+				
+				alert(snoopy.alimentarse());
+			
+				alert(snoopy.emitirSonido());
+				
+			</script>
+			
+			
+			<div>
+			
+				<figure>
+					<img src="img/pikachu.jpg" id="pikachu"/>
+					<figcaption> FIN DE LA OOP DE JAVASCRIPT (💩) </figcaption>
+				</figure>
+			
+			</div>
+			
+			
+		</div>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> MANEJANDO ARRAYS EN JAVASCRIPT </h1>
+			
+			
+			<script type="text/javascript">
+			
+				// SLICE CON CADENAS DE TEXTO;
+				
+				// LOTERIA XXXXX (5 dígitos)
+				
+				
+				/*
+				let texto = "abcde";				
+				alert(texto.slice(0,2)); // ab
+				*/
+				
+				
+				const ceros = "00000";  // 5 en total
+				
+				let decimo = parseInt(Math.random() * 100000); 	// [00000 .. 99999]
+				
+				let cadena = decimo.toString();	// 123	.....	"123" - longitud = 3
+				
+				alert("DECIMO STRING ... " + cadena + " ---> " + cadena.length);
+				
+				var cerosAdicionales = ceros.slice(0, ceros.length - cadena.length);
+				
+				alert("CEROS ADICIONALES ... " + cerosAdicionales);
+				
+				decimo = cerosAdicionales + cadena;
+				
+				alert("TU DECIMO ES EL ... " + decimo);			
+			
+			</script>
+			
+			
+			<script type="text/javascript">
+			
+				/*	
+			
+				// CON CADENAS DE TEXTO ... SIMILAR A LO QUE SUCEDE CON LOS ARRAYS:			
+				alert("CADENA - COMPLETA ... " + ("PEPITO".substring(0)));
+				alert("CADENA - PARCIAL ... " + ("PEPITO".substring(2)));
+				alert("CADENA - 1 ELEMENTO ... " + ("PEPITO".substring(0,1)));
+				
+				// POSICIÓN INICIAL, CUÁNTOS ELEMENTOS.
+				alert("CADENA - substr: ... " + ("PEPITO".substr(2,1))); // P
+				
+				// DE POSICIÓN INICIAL A POSICIÓN FINAL (sin incluir el extremo final)
+				alert("CADENA - substring: ... " + ("PEPITO".substring(2,1))); // E
+				
+				*/
+				
+			</script>
+			
+			
+			<script type="text/javascript">
+			
+				const numeros = new Array(3);
+				
+				alert(numeros);
+				
+				
+				///////////
+				
+				
+				for (let i=0; i<numeros.length; i++) {
+					numeros[i] = (i+1) * 1000;
+				}
+				
+				alert(numeros);
+				
+			
+			</script>
+			
+			
+			
+			<script type="text/javascript">
+			
+				var frutas = ["TOMATE", "BABANA", "FRESA", "MELON", "MANGO", "PAPAYA", "LICHY","NABO"];
+			
+				alert("FRUTAS ORIGINALES... \n" + frutas);
+				
+				let eliminado = frutas.shift();		// MODIFICA EL ARRAY ORIGINAL // TOMATE
+				
+				alert("ELIMINADO ... " + eliminado);
+				
+				alert("FRUTAS SHIFT ... \n" + frutas);
+				
+				
+				
+				
+				
+				eliminado = frutas.pop();
+				
+				alert("ELIMINADO ... " + eliminado);		// NABO
+				
+				alert("FRUTAS POP ... \n" + frutas);
+				
+				
+				
+				
+				
+				eliminado = frutas.splice(4,2);		// BORRAR INICIANDO EN POSICIÓN 4 Y 2 ELEMENTOS (A LA DERECHA)				
+				
+				alert("ELIMINADO ... " + eliminado);	// PAPAYA Y LICHY
+				
+				alert("FRUTAS SPLICE-ELIMINAR ... \n" + frutas);
+				
+				
+				
+				
+				
+				frutas.splice(2,0,"SANDIA");
+				
+				alert("FRUTAS SPLICE-AÑADIR ... \n" + frutas);
+				
+				
+				
+				
+				
+				let posicionBABANA = frutas.indexOf("BABANA");
+				
+				alert("POSICION BABANA ... " + posicionBABANA);
+				
+
+				// NO ELIMINA LA POSICIÓN, SÓLO SU CONTENIDO (DEJA EL HUECO)
+				delete( frutas[posicionBABANA] );
+				
+				alert("FRUTAS DELETE ... \n" + frutas);
+				
+				
+				
+				// OJO, EL HUECO TE LO RESPETA, NO LO RELLENA CON EL NUEVO ELEMENTO DE UNSHIFT
+				//frutas.unshift("ALICATES"); // ALICATES,,FRESA,SANDIA,MELON,MANGO
+				//alert("FRUTAS - CON UNSHIFT ... \n" + frutas);
+
+				
+				
+				
+				// MACHACAMOS EL HUECO CON UN NUEVO ELEMENTO.
+				frutas[0] = "ALICATES";
+				
+				
+				// PARTIMOS DE ... [ALICATES,FRESA,SANDIA,MELON,MANGO]
+				
+
+				// LAMBDAS - NOTACIÓN ARROW - FLECHA:
+				const filtroLAMBDA = 
+
+								// MODO GENERAL (paréntesis entrada y return salida)
+								
+								(x) => {
+									
+									const siNo = (x !== "ALICATES");
+									
+									alert(x + " ... ¿ES OTRA COSA QUE ALICATES? ... " + siNo);
+									
+									return siNo ;	// devuelve un boolean.
+									
+								};
+
+								
+								// MODO REDUCIDO ... return implícito a la salida.
+								// x => x !== "ALICATES";	// devuelve un boolean.
+				
+								
+				
+								
+				// FUNCIÓN TRADICIONAL:				
+				function f_filtro(y) {
+										
+										
+										alert("ELEMENTO y = " + y + "\n\n --[SINO]--> " + (y !== "ALICATES"));
+										
+										return (y !== "ALICATES"); // devolver un booleano.
+										
+										/*
+										if(y !== "ALICATES") {		// devolver el elemento.
+											return y;
+										}
+										*/
+										
+				}								
+				
+								
+				// DISTINTAS OPCIONES DE UTILIZAR LA FUNCIÓN DE FILTRADO:				
+								
+				// frutas = frutas.filter( filtroLAMBDA );				
+
+				// frutas = frutas.filter(elemento => elemento !== "ALICATES");	// LAMBDA in-line COMO EL CSS.
+				
+				frutas = frutas.filter( f_filtro ); // NO FUNCIONA CON FORMA TRADICIONAL.
+				
+				
+				alert("FRUTAS FILTER (LAMBDA) ... \n" + frutas);
+
+				
+				
+				// SLICE:
+					
+				// [FRESA,SANDIA,MELON,MANGO]	//	LONGITUD == 4 ELEMENTOS.
+					
+				const frutasInicio = frutas.slice(0,2); // [FRESA,SANDIA] .. índice 2 no se incluye.
+				alert("FRUTAS SLICE(0,2) ... " + frutasInicio);
+				
+				//const frutasFinal =	frutas.slice(2,4);	// [MELON,MANGO] .. índice 4 porque extremo no se incluye
+				//const frutasFinal =	frutas.slice(2,frutas.lenght);
+				//const frutasFinal =	frutas.slice(2,-1);
+				//alert("FRUTAS SLICE(2,4) ... " + frutasFinal);
+				
+				frutasFinal =	frutas.slice(2);	// de la posición 2 hasta el final (no indicamos el 2º parámetro)
+				alert("FRUTAS SLICE(2) ... " + frutasFinal);
+				
+				
+				
+				
+				alert("ARRAY ORIGINAL FRUTAS ... " + frutas);
+				
+				alert("ORDENADO ... " + frutas.sort());				
+				
+				alert("ARRAY ORIGINAL FRUTAS (lo cambio sort()) ... " + frutas);
+				
+			</script>			
+
+		</div>
+		
+	</body>
+
+</html>

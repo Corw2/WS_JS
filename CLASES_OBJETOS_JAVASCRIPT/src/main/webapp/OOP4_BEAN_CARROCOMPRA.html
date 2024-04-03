@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>		
+	</head>
+	
+		
+	<body>
+	
+		<div align="center">
+			
+			<h1> CLASES Y OBJETOS </h1>
+			
+			<h2 style="color:blue;"> BEAN CARRO DE LA COMPRA </h2>
+
+
+			<div id="pantalla"></div>
+
+			
+			<script type="text/javascript">
+			
+				class CarroCompra {
+					
+					// ESTADO - PROPIEDADES Y SUS VALORES EN UN DETERMINADO MOMENTO:
+					//
+					//	PROPIEDAD PRIVADA CON #xxx
+					//
+					#compra;
+					
+					
+					constructor() {
+						// EL CARRO REALMENTE SERÁ UN ARRAY DE JAVASCRIPT (como un List de Java, ya que se
+						//	permite ampliar o disminuir la longitud del mismo ... en Java los arrays no pueden
+						//	modificar la longitud con la que fueron declaros, en JavaScript sí).
+						//
+						// NO OLVIDAR EL USO DE this.xxx PARA ACCEDER A LA PROPIEDAD.
+						//
+						this.#compra = new Array();		// O BIEN HACER USO DE LA FORMA MÁS SIMPLE ... []
+						
+						alert("CREADO EL OBJETO CarroCompra");
+						
+					}
+
+
+					
+					// MÉTODOS DE NEGOCIO O BUSINESS-LOGIC ... ¿QUÉ SABE HACER ESTA CLASE?:
+					
+					// ERROR, NO PUEDES USAR LA ñ ... añadirArticulo().
+					//	QUIZÁS SE DEBIÓ A QUE ORIGINALMENTE NO SE INDICABA UN charset="UTF-8".
+						
+					agregarArticulo(articulo) {
+						this.#compra.push(articulo);	// push AÑADE AL FINAL / unshift AÑADE AL PRINCIPIO.
+					}
+
+					
+					
+					eliminarArticulo(articulo) {
+						
+						let posicion = this.#compra.indexOf(articulo);	// BUSCAR POSICIÓN DEL ELEMENTO EN EL ARRAY.
+						
+						if(posicion !== -1) {	// SI indexOf(xxx) DEVOLVIESE -1 ES QUE NO LO ENCUENTRA.
+							let eliminado = this.#compra.splice(posicion, 1); // EXTRAER DESDE posicion, 1 elemento.
+							alert("ELIMINADO ... " + eliminado + " -> posicion: " + posicion);
+							return eliminado;
+						}
+						
+						alert("ARTICULO " + articulo + " ... NO ENCONTRADO.");
+						
+					}
+
+										
+
+					eliminarUltimoArticulo() {
+						
+						// array.isEmpty() !! NO FUNCIONA !!
+						
+						// arguments ES EL ARRAY QUE TODA FUNCIÓN TIENE POR DEFECTO PARA
+						//				ALMACENAR LOS ARGUMENTOS DE ENTRADA AUNQUE NO SE
+						//				HAYA DECLARADO NINGÚN PARÁMETRO EN SU DEFINICIÓN;
+						
+						if(this.#compra.length === 0) {
+							alert("NADA QUE ELIMINAR, EL CARRO ESTA VACIO");
+							
+						} else if(arguments.length !== 0) {
+							alert("ERROR, EL METODO: eliminarUltimoArticulo \n" +
+									"... NO ADMITE PARAMETROS = \n\t" +
+											arguments[0] + " ... etc.");
+							
+						} else {
+							let eliminado = this.#compra.pop();	// pop QUITA DEL FINAL / shift QUITA DEL PRINCIPIO.
+							alert("ELIMINADO EL ULTIMO ARTICULO ... " + eliminado);
+							return eliminado;
+						}
+						
+					}
+					
+					
+
+					obtenerCompra() {
+						return this.#compra; // ES UNA COPIA DE LA REFERENCIA DEL ARRAY.
+					}			
+					
+					
+					
+					vaciarCarro() {
+						
+						if(this.#compra.length === 0) {
+							return "EL CARRO YA ESTABA VACIO";
+							
+						} else {							
+							let vaciado = this.#compra.splice(0, this.#compra.length); // EXTRAE TODOS LOS ELEMENTOS.
+							alert("SE HA VACIADO EL CARRO");
+							return vaciado;
+						}
+						
+					}
+
+					
+
+					//////////////// TO-STRING -- IMPRIME EL ESTADO DEL OBJETO /////////////
+					
+					toString() {
+						
+						let salida = "TU CARRO: ";
+						
+						if(this.#compra.length === 0) {
+							salida += "\n\t ... ESTA VACIO";
+						
+						} else {						
+							salida += "\n\n ";
+							
+							for(let articulo of this.#compra) {
+								salida += articulo + " ";
+							}
+
+							salida += "\n\n TOTAL: " + 
+											this.#compra.length + " ARTICULOS"; 
+							
+						}
+						
+						return salida;
+						
+					}
+
+				}
+
+				//
+				// ALGUNAS WEB PARA CONSULTAR:
+				//
+				// https://alextomas.com/blog/cinco-formas-eliminar-elementos-array-javascript
+				//
+				// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/arguments
+				
+				
+			</script>						
+
+
+
+
+
+			<script type="text/javascript">
+
+				//////////////////////////// PRUEBAS /////////////////////////////
+			
+				const carroCompra = new CarroCompra();
+				
+				// 1:
+				alert(carroCompra);
+				
+				// 2:
+				carroCompra.agregarArticulo("PAN");
+				carroCompra.agregarArticulo("LECHUGA");
+				carroCompra.agregarArticulo("TOMATE");
+				carroCompra.agregarArticulo("QUESO");
+				carroCompra.agregarArticulo("JAMON");				
+				carroCompra.agregarArticulo("VINO");
+				alert(carroCompra);				
+
+				// 3:
+				carroCompra.agregarArticulo("MOSTAZA-PICANTE");
+				alert(carroCompra);
+				let eliminado = carroCompra.eliminarArticulo("MOSTAZA-PICANTE");	// <--- ELIMINAR UN ARTÍCULO XXX.
+				alert("SE DEVUELVE A LA ESTANTERIA ... " + eliminado);
+				alert(carroCompra);
+				
+				// 4:
+				const otroPicante = "GUINDILLA-INFERNAL";
+				carroCompra.agregarArticulo(otroPicante);
+				alert(carroCompra);
+				let otroEliminado = carroCompra.eliminarUltimoArticulo(); // <--- ELIMINAR EL ÚLTIMO ARTÍCULO.
+				alert("TAMBIEN SE DEVUELVE A LA ESTANTERIA ... " + otroEliminado);
+				alert(carroCompra);
+								
+				// 5:
+				carroCompra.eliminarArticulo("CHORIZO"); // OK, PERO NO EXISTE.
+				carroCompra.eliminarUltimoArticulo("MORCILLA"); // ERROR, NO ADMITE PARÁMETROS.
+								
+				// 6:
+				let compra = carroCompra.obtenerCompra();
+				alert("TU COMPRA ... " + compra);
+								
+				// 7:
+				let devueltos = carroCompra.vaciarCarro();
+				alert("SE DEVUELVEN A LA ESTANTERIA TODOS LOS ARTICULOS: " + 
+						"\n\n\t" + devueltos);
+				
+				// 8:
+				alert(carroCompra.vaciarCarro());	// INTENTAR VACIAR OTRA VEZ.
+				
+				
+				// AL FINAL EL CARRO DEBE QUEDAR VACIO COMPLETAMENTE:
+				alert("AL FINAL ... \n\n" + carroCompra);
+				
+			</script>
+
+			
+		</div>
+		
+	</body>
+	
+</html>

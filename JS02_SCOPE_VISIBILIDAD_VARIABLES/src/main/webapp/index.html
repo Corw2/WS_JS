@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+			
+				valorGlobal_1 = 1;				// NO LO HAGAS NÚNCA ASÍ
+				
+				var valorGlobal_2 = 2;
+				
+				
+				
+				function funcion_A() {
+					valorGlobal_3 = 3;			// NO HEMOS INDICADO var				
+				}
+				
+				
+				alert("valorGlobal_1: " + valorGlobal_1);
+				alert("valorGlobal_2: " + valorGlobal_2);
+				
+				funcion_A(); // DEBES LLAMAR A LA FUNCIÓN PARA QUE CREE LA VARIBLE GLOBAL.				
+				alert("valorGlobal_3: " + valorGlobal_3);
+				
+				
+				
+				
+				
+				//////////////////////////////////////////////////////
+				
+								
+				function funcion_B() {
+					var valorLocal = true; // SE QUEDA LOCAL A LA FUNCIÓN B (visible por C)
+					//valorLocal = false; // SE CONVIERTE EN GLOBAL (visible por C)
+					
+					alert("funcion_B ... valorLocal = " + valorLocal);
+				}
+				
+				function funcion_C() {
+					alert("funcion_C valorLocal = " + valorLocal); // ERROR POR CONSOLA SI PONEMOS var valorLocal.
+				}
+				
+				funcion_B();
+				//funcion_C(); // COMENTADA PARA QUE NO GENERE ERROR POR CONSOLA DADO QUE USAMOS var valorLocal.
+				
+				
+				
+				
+				
+				//////////////////////////////////////////////////////
+				
+								
+				function funcion_D() {
+					
+					/*
+					for(var i=3; i>=0; i--) {			// DECLARANDO LA VARIABLE i CON var HACEMOS QUE SEA GLOBAL A LA FUNCIÓN				
+						alert("CUENTA ATRAS ... " + i);	//	SE VERÁ FUERA DEL BUCLE for QUE LA DECLARA.
+					}
+					*/
+					
+					
+					for(let i=3; i>=0; i--) {			// CON let LA VARIABLE i SÓLO SE VERÁ DENTRO DEL BUCLE for QUE LA DEFINIÓ.				
+						alert("CUENTA ATRAS ... " + i);	// CON LOS LAZOS O BUCLES DE CONTROL (LOOPS) UTILIZA let.
+					}
+					
+					
+					alert("VALOR FINAL DE i ... " + i); // 0 SE IMPRIME, RESTA 1 ... i = 0 - 1 = -1
+														// Uncaught ReferenceError: i is not defined
+				}
+
+				
+				funcion_D();
+				
+			
+			</script>
+
+		</div>
+		
+	</body>
+
+</html>

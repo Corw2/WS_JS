@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+			
+				var pajaro = {
+						
+									tipo:"CARPINTERO",
+									
+									peso:360,
+						
+									alimentarse: function() {
+													return "COME BELLOTAS";
+												 }					
+				};
+			
+			
+			
+				var z;
+			
+				const elementos = ["HOLA", 123, true, pajaro, null, z];
+			
+				
+				for(let i=0; i<elementos.length; i++) {
+					alert(elementos[i] + " ---> TIPO: " + typeof(elementos[i]));
+				}
+				
+				
+			</script>
+			
+			
+			<script type="text/javascript">
+			
+				document.write("PAJARO ... " + pajaro);
+			
+				document.write("<br/>");
+				
+				document.write("TIPO ... " + pajaro.tipo);
+				
+				document.write("<br/>");
+
+				document.write("PESO ... " + pajaro.peso + " gramos");				
+				
+				document.write("<br/>");
+				
+				document.write("¿QUÉ COME? ... " + pajaro.alimentarse());
+
+			</script>
+			
+			
+
+		</div>
+		
+	</body>
+
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+
+			
+			
+			const cerveza = {
+								marca: "MAHOU",
+								formato: "LATA",
+								graduacion: "5 GRADOS",
+								precio: 0.56,
+								volumen: "33cl",
+								fria: true,
+								
+								beber: function(que) {
+											alert("ME BEBO UNA " + que /*this.marca*/ + " ... QUE FRESQUITA !!!");										
+										}
+							};	
+		
+			
+			/*
+			for (let propiedad in cerveza) {
+				alert( propiedad + " ... "+ cerveza[propiedad] );
+			} 
+			*/
+			
+			//cerveza.beber();			
+			
+			
+			
+			
+			////////////////////////////////////////////////
+				
+			/*
+			
+			var arrayNumerosLetras = [1,"A",3,"B",5,"C",7,"D",9];
+			
+		
+			// ME DA EL ÍNDICE:
+			for (let indice in arrayNumerosLetras) {
+				alert( arrayNumerosLetras[indice] );
+			} 
+			
+			*/
+				
+			
+			////////////////////////////////////////////////
+				
+			/*	
+			
+			var arrayNumerosLetras = [1,"A",3,"B",5,"C",7,"D",9];
+			
+		
+			// ME DA EL ÍNDICE:
+			for (let valor of arrayNumerosLetras) {
+				alert(valor);
+			} 
+			
+			*/
+			
+			
+			////////////////////////////////////////////////
+				
+			
+			/*
+			
+			var arrayNumerosLetras = [1,"A",3,"B",5,"C",7,"D",9];
+			
+			
+			function callback(item, index) {
+				alert("ELEMENTO: " + item + " ... " + " INDICE: " + index);
+			}
+			
+			
+			arrayNumerosLetras.forEach(callback); 
+
+			*/
+			
+			</script>
+
+
+			<button onclick="cerveza.beber('cocacola');"> BEBER </button>
+
+		</div>
+		
+	</body>
+
+</html>

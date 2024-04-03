@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+		
+		<style type="text/css">
+			img {
+				width:350px;
+				height:auto;
+				border-radius:25px;
+				border:3px solid red;
+			}
+			
+			#pantalla {
+				width:350px;
+				height:400px;
+				visibility:hidden;
+			}
+		</style>
+		
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> ¿QUIÉN GANA? </h1>
+
+
+			<script type="text/javascript">
+			
+				var RANGO;
+				
+				var TERMINAR
+			
+				var LEONES;
+				var TIGRES;
+				
+				
+				function f_jugar() {
+					f_iniciar();
+					f_asignarValores();
+					f_comprobarGanador();					
+				}
+				
+				
+				/////////////////////////////////////////////////////////////////////////////
+				
+				
+				function f_iniciar() {
+					
+					RANGO 		= 20;
+					TERMINAR 	= RANGO/2;
+					LEONES		= new Array();
+					TIGRES		= new Array();
+				
+				}
+				
+				
+				/////////////////////////////////////////////////////////////////////////////
+				
+				
+				function f_asignarValores() {
+				
+					var aleatorio;
+					
+					do {
+				
+						aleatorio = parseInt(Math.random() * RANGO) + 1; // [1..20]
+						
+						//alert(" ---> " + aleatorio);
+						
+						if(aleatorio %2 == 0) {
+							LEONES.push(aleatorio);
+							
+						} else {
+							TIGRES.push(aleatorio);
+						}
+						
+						
+					} while(aleatorio != TERMINAR);					
+					
+				}
+				
+				
+				/////////////////////////////////////////////////////////////////////////////
+				
+				
+				function f_obtenerSumaTotalValores(arrayValores) {
+					
+					var sumaTotal = 0;
+					
+					for(let valor of arrayValores) {
+						sumaTotal += valor;					// sumaTotal = sumaTotal + valor
+					}
+					
+					return sumaTotal;
+					
+				}
+				
+				
+				function f_comprobarGanador() {
+					
+					var sumaTotalLeones = f_obtenerSumaTotalValores(LEONES);
+					var sumaTotalTigres = f_obtenerSumaTotalValores(TIGRES);
+					
+					
+					alert("SUMA TOTAL LEONES = " + sumaTotalLeones + "\n\n" + LEONES);
+					
+					alert("SUMA TOTAL TIGRES = " + sumaTotalTigres + "\n\n" + TIGRES);
+					
+					
+					/// ¿QUIÉN GANA?:
+						
+					if(sumaTotalLeones > sumaTotalTigres) {
+						alert("GANAN LOS LEONES !!");
+						document.querySelector("#pantalla").innerHTML = 
+							"<img src='img/leonGanador.jpg'/>";
+						
+					} else if (sumaTotalLeones < sumaTotalTigres) {
+						alert("GANAN LOS TIGRES !!");
+						document.querySelector("#pantalla").innerHTML = 
+							"<img src='img/tigreGanador.jpg'/>";
+						
+					} else {
+						alert("LEONES Y TIGRES QUEDAN EMPATADOS !!");
+					}					
+					
+					document.getElementById("pantalla").style.visibility = "visible";
+					
+				}				
+			
+			</script>			
+			
+			
+			<button onclick="f_jugar();">
+				JUGAR
+			</button>
+			
+			<br/><br/><br/>
+			
+			<div id="pantalla"></div>
+			
+			
+			<br/>
+			
+
+			<button onclick="window.location.href='tigresLeonesFor.html'">
+				RECARGAR PAGINA
+			</button>			
+			
+		</div>
+		
+	</body>
+
+</html>

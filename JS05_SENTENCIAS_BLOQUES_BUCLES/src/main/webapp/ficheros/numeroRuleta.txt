@@ -1,0 +1,9 @@
+
+<jugada>
+
+	<numero> 22 </numero>
+	<color> RED </color>
+	<parImpar> PAR </parImpar>	
+
+</jugada>
+

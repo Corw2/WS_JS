@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+		
+		<style type="text/css">
+		
+			button {
+				width:150px;
+				height:50px;
+				padding:10px;
+				margin:10px;
+				border-radius:25px;
+			}
+			
+			div.calculadora {
+				width:600px;
+				height:320px;
+				padding:20px;
+				margin:30px;
+				border:3px solid green;
+				border-radius:25px;
+				background-color:lime;	
+			}
+		
+		
+			#pantalla {
+				width:70%;
+				height:60px;
+				padding:20px;
+				margin:18px;
+				border:2px solid red;
+				border-radius:25px;
+				background-color:aqua;
+				color:brown;
+				font-size:60px;
+				font-weight:bolder;				
+			}
+		
+		</style>
+		
+		
+		<script type="text/javascript">
+		
+			// NOTACIÓN DE FLECHA ... ARROW ... LAMBDAS.
+		
+			const potenciacionCallBack = (x,y) => {				
+								 
+				/*
+				let resultado = Math.pow(x,y);
+				resultado = resultado.toFixed(5);
+				return resultado;
+				*/	
+				
+				return Math.pow(x,y).toFixed(5);
+				
+			}
+		
+
+			const redondeoCallBack = (x) => {				
+				return Math.round(x); 				
+			}
+			
+
+			const raizCuadradaCallBack = (x) => {
+				
+				//https://tecnonucleous.com/2018/03/24/como-limitar-los-numeros-decimales-es-javascript/
+				
+				/*
+				let resultado = Math.sqrt(x);
+				resultado = resultado.toFixed(5);
+				return resultado;
+				*/				
+				
+				return Math.sqrt(x).toFixed(5);
+				
+			}
+			
+			
+			
+			/*
+			function f_calcular(datos, callback) {
+				
+				alert(callback.name + "\n" +
+						
+						" x = " + datos[0] +
+						
+						( (datos[1] == undefined) ? "" : " y = " + datos[1] ) + "\n" +
+						
+						" ... RESULTADO =  " + callback(datos[0], datos[1]));
+				
+			}
+			*/
+
+			
+			function f_calcular(nombreDeLaCallBack) {
+				
+				// LEERLO DEL DOCUMENTO HTML:
+				const x = document.getElementById("x").value;
+				const y = document.getElementById("y").value;
+				
+				
+				//alert("SOLICITAS LA CALLBACK ... "+ nombreDeLaCallBack);
+				
+				var callBack;		// REQUIERE LA FUNCIÓN, NO SÓLO SU "nombre".
+								
+				
+				switch(nombreDeLaCallBack) {
+				
+					case "potenciacionCallBack":
+						callBack = potenciacionCallBack;
+						break;
+						
+					case "redondeoCallBack":
+						callBack = redondeoCallBack;
+						break;
+						
+					case "raizCuadradaCallBack":
+						callBack = raizCuadradaCallBack;
+						break;
+						
+					default:
+						alert("LA CALLBACK SOLICITADA NO EXISTE ... " +
+								nombreDeLaCallBack);
+						return;
+
+				}
+
+				/*
+				alert(callBack.name + "\n" +
+						
+						" X = " + x  +
+						
+						( (y == undefined || y.trim() === "") ? "" : " Y = " + y ) + "\n" +
+						
+						" ... RESULTADO =  " + callBack(x,y)
+					);
+				*/
+				
+				document.getElementById("pantalla").innerHTML = callBack(x,y);
+				
+			}
+			
+		</script>
+		
+		
+		<!-- 
+			<script type="text/javascript">
+			
+				f_calcular([2, 3], potenciacionCallBack);
+			
+				f_calcular([3.3], redondeoCallBack);
+				
+				f_calcular([25], raizCuadradaCallBack);
+				
+			</script>
+		-->
+		
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<h1> CALCULADORA - CALLBACKs </h1>
+			
+			
+			<br/><br/>
+			
+			
+			<div class="calculadora">
+			
+				<div id="pantalla" class="pantalla"></div>
+			
+				<label> X: </label>
+				<input type="text" id="x" value="2" size="5" maxlength="5"/>
+				
+				<br/><br/>
+				
+				<label> Y: </label>
+				<input type="text" id="y" value="3" size="5" maxlength="5"/>
+				
+				<br/><br/>
+				<br/><br/>
+				
+				<button onclick = "f_calcular('potenciacionCallBack');">
+					POTENCIACION
+				</button>
+			
+				<button onclick = "f_calcular('redondeoCallBack');">
+					REDONDEO
+				</button>
+				
+				<button onclick = "f_calcular('raizCuadradaCallBack');">
+					RAÍZ CUADRADA
+				</button>							
+			
+			</div>
+
+		</div>
+		
+	</body>
+
+</html>

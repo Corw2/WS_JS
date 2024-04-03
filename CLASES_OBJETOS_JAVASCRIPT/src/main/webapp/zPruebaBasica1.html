@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>		
+	</head>
+	
+		
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+			
+				class Pep {
+					
+					x;
+					
+					constructor() {
+						alert("en constructor");
+						this.x = [1,2,3]; 			//new Array();
+					}
+					
+					toString() {
+						return this.x.toString();	// TIENES QUE USAR this SIEMPRE.
+					}
+					
+				}
+
+				
+				
+				const pep = new Pep();
+			
+				alert(pep.x);				
+				
+				alert(pep);				
+				
+				
+			</script>	
+			
+		</div>
+		
+	</body>
+	
+</html>

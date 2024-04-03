@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+			
+				// FUNCIONAL CREACIONAL ... DEFINES LA FUNCIÓN CON SUS ATRIBUTOS Y
+				//	MÉTODOS INTERNOS Y LUEGO PARA OBTENER EL OBJETO HACES USO DEL
+				//	OPERADOR new LAS VECES QUE CREAS NECESARIAS.
+			
+				
+				function generarBebida(tipo, volumen, envase) {
+					
+					// PROPIEDADES ( marcar las variables/constantes con this. ):
+					// propiedad interna del objeto = valor del parámetro externo
+					
+					this.tipo = tipo;
+					this.volumen = volumen;
+					this.envase = envase;
+				
+					// SI LA PROPIEDAD O EL MÉTODO NO LLEVA POR DELANTE UN this, SE
+					//	CONSIDERA PRIVADO O DE USO EXCLUSIVO PARA LA CLASE (no es 
+					//		accesible desde fuera, salvo que uno del los miembros de
+					//		la clase lo entregue)
+					
+					
+					// ES PRIVADO (lo entiende como una variable local de la función
+					//				y !!! NO COMO UNA PROPIEDAD DEL OBJETO !!! ):
+					const premioSINO =  
+						( (parseInt(Math.random() * 2) == 1) ? "PREMIO" : "SIGUE JUGANDO");
+					
+					
+					///// TO-STRING ///// 
+					
+					// SI NO USAS this.XXX NO PODRÁS LLAMARLO DESDE FUERA:
+					
+					// 		TE SALDRÍA ... [Object object]
+					
+					
+					// RECUERDA QUE premioSINO ES UNA CONSTANTE CON UN SCOPE QUE SE
+					//	LIMITA A ESTA FUNCIÓN (no lleva this.) Y QUE POR TANTO, NO
+					//	VE FUERA DE ELLA. GRACIAS AL MÉTODO toString (es otro miembro
+					//	de esta clase) PODREMOS CUÁL ES SU VALOR FUERA DE LA CLASE.
+					
+					this.toString = function() {									
+									return "TIPO: " + this.tipo + "\n" +  
+											"VOLUMEN: " + this.volumen + "\n" + 
+											"ENVASE: " + this.envase + "\n" +
+											"PREMIO SI/NO: " + premioSINO; 
+											// no pongas this.premioSINO ... NO ES UN ATRIBUTO DE LA CLASE,
+											//		ES UNA VARIABLE LOCAL.
+								};
+					
+				}
+				
+				
+				
+				////////////// PRUEBA /////////////////////
+				
+				//const bebida_1 = new generarBebida("COCACOLA","33cc","LATA");
+				
+				// DIRÁ UNDEFINED ... ES VARIABLE LOCAL Y NO ATRIBUTO == PRIVADO.
+				//alert("¿TIENE PREMIO LA BEBIDA 1? >>> " + bebida_1.premioSINO);
+								
+				//alert("COMPRAMOS LA BEBIDA ... \n\n" + bebida_1);
+				
+				
+				////////////////////////////////////////////////////
+				
+				
+				
+				
+				
+			</script>			
+
+		</div>
+		
+	</body>
+
+</html>

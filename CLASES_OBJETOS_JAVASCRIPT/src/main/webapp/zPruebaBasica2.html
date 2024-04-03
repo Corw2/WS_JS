@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>		
+	</head>
+	
+		
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+			
+				class Pep {
+					
+					// PRIVADO
+					#x;
+					
+					constructor() {
+						alert("en constructor");
+						this.#x = [1,2,3]; 			//new Array();
+					}
+					
+					
+					agregar(numero) {
+						alert("AGREGAR EL " + numero);
+						this.#x.push(numero);		// AÑADE AL FINAL	   - pop 	QUITA POR EL FINAL.
+						this.#x.unshift(numero);	// AÑADE AL PRINCIPIO  - shift	QUITA POR EL PRINCIPIO.
+					}
+					
+					
+					toString() {
+						return this.#x.toString();	// TIENES QUE USAR this.#x SIEMPRE (redundante y tedioso).
+					}
+					
+				}
+
+				
+				
+				const pep = new Pep();
+				
+				//alert(pep.x);		// undefined ... ES PRIVADO.
+				
+				alert(pep);
+								
+				pep.agregar(4);
+				
+				alert(pep);
+				
+			</script>	
+			
+		</div>
+		
+	</body>
+	
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+			
+			<script type="text/javascript">
+			
+
+				const generadorAleatorio = (min, max) => {
+					
+					// max = 10;
+					// min = 1;
+					// return parseInt(Math.random() * 10) + 1;
+					
+					
+					// max = 10;
+					// min = 3;
+					// return parseInt(Math.random() * (10-3)+1)) + 3;
+					// return parseInt(Math.random() * 8) + 3;				// 0+3 = 3	7+3=10
+
+					if(min <= 0) {
+						alert("EL MÍNIMO HA DE SER 1 O SUPERIOR");
+						return false;
+					}
+					
+					if(min >= max) {
+						alert("MÍNIMO NO PUEDE SER NI MAYOR NI IGUAL QUE EL MÁXIMO !!!")
+						return false;
+					}
+					
+					
+					return parseInt(Math.random() * (max-min + 1)) + min;
+					
+				};
+
+				
+				const generadorAleatorioARROW = (min, max) => 					
+									parseInt(Math.random() * (max-min + 1)) + min;
+					
+				
+				const CUANTOS = 100;				
+									
+				const numeros = new Array();
+				
+				
+				/*
+				
+					let aleatorio;
+					
+					
+					do {
+						
+						 aleatorio = generadorAleatorio(3,7);
+						
+						//let aleatorio = generadorAleatorioARROW(3,7);
+						
+						//alert(aleatorio);
+						numeros.push(aleatorio);
+						
+					} while(aleatorio && numeros.length < CUANTOS);
+
+				*/	
+				
+				let aleatorio;
+				
+				// UN NÚMERO == 0 ES false ... EL RESTO ES true.
+				
+				const elMinimo = 5;				
+				const elMaximo = 25;
+				
+				while( (aleatorio = generadorAleatorio(elMinimo, elMaximo) ) &&
+											(numeros.length < CUANTOS) ) {
+					
+					numeros.push(aleatorio);					
+				
+				}
+				
+				alert("¿10? ... " + numeros.includes(10));
+				
+				alert("ARRAY ... \n\n " + numeros);
+			
+			</script>
+			
+
+		</div>
+		
+	</body>
+
+</html>

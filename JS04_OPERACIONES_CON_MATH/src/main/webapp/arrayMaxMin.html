@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>
+	</head>
+
+
+	<body>
+	
+		<div align="center">
+						
+			<script type="text/javascript">
+			
+				const FONDO_ESCALA = 1000;
+			
+				const arrayNumeros = new Array();
+				
+				const cuantos = parseInt(prompt("¿CUANTOS QUIERES? ... "));
+				
+				
+				for(let i=0; i<cuantos; i++) {
+					
+					arrayNumeros.push( parseInt( Math.random() * FONDO_ESCALA ) + 1 );
+										
+				}
+
+				
+				alert(arrayNumeros);
+				
+				
+				// PARA QUE ADMITA UN ARRAY EN LUGAR DE NUMEROS SUELTOS SEPARADOS POR COMAS.
+				alert("MÁXIMO DE LOS VALORES: 22, -4, 73, 30 ... " + 
+															Math.max(22,-4,73,30));
+				
+				alert("MÍNIMO DE LOS VALORES: 22, -4, 73, 30 ... " + 
+															Math.min(22,-4,73,30));
+				
+				
+				alert("MÁXIMO DEL ARRAY = " + Math.max( ... arrayNumeros ));
+				alert("MÍNIMO DEL ARRAY = " + Math.min( ... arrayNumeros ));
+								
+			</script>
+
+		</div>
+		
+	</body>
+
+</html>

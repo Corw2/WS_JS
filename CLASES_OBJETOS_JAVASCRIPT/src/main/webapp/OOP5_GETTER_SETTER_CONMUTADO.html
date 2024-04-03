@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+
+
+<html lang="es">
+	
+	<head>
+		<meta charset="UTF-8">
+		<title>DESARROLLO WEB</title>		
+	</head>
+	
+		
+	<body>
+	
+		<div align="center">
+			
+			<h1> CLASES Y OBJETOS </h1>
+			
+			<h2 style="color:blue;"> DEFINICIÓN DE ATRIBUTOS CONMUTADOS - GETTERS Y SETTERS </h2>
+
+
+			<div id="pantalla"></div>
+
+
+			<script type="text/javascript">
+
+				class Pintura {
+			
+					// ATRIBUTO PRIVADO.
+					#color;
+					
+					
+					constructor(color = "BLANCO") {		// valor por defecto si no se indica un color.
+						alert("CREAR UN OBJETO CUYA CLASE ES ... Pintura.");
+						this.#color = color;
+					}
+					
+					// GETTERS Y SETTERS CONMUTADOS ... se utilizarán como propiedad y 
+					//	será la máquina la que decidirá si llamar al getter (obtener) o
+					//	al setters (asignar), en función de la operación indicada:
+					//
+					//		let colorActual = pintura.colorPintura;		... GETTER.
+					//
+					//		pintura.colorPintura = "VERDE";				... SETTER.
+					
+
+					// get metodo() { return propiedad; }
+					//
+					// set metodo(valor) { this.propiedad = valor };
+					
+					get colorPintura() {		// NO ES getColorPintura() SINO get colorPintura() ... espaciado y sin parámetros.
+						alert(">>> SE INVOCA AL GETTER - colorPintura(atributo) = " + this.#color);
+						return this.#color;
+					}
+					
+					set colorPintura(color) {
+						alert(">>> SE INVOCA AL SETTER - colorPintura(parametro) = " + color);
+						this.#color = color;	// NO ES setColorPintura() SINO set colorPintura(xxx) ... espaciado y con 1 parámetro.
+					}
+			
+
+					////////////////////// TO-STRING //////////////////////////			
+					
+					toString() {
+						return "PINTURA - toString(): \t" + this.#color;
+					}
+					
+				}
+			
+			</script>
+			
+			
+			
+			<script type="text/javascript">
+			
+				//const pintura = new Pintura();		// USARÁ BLANCO (asignación por defecto en constructor).
+				
+				const pintura = new Pintura("ROSA");	// USARÁ ROSA.
+				
+				alert(pintura);
+				
+				
+				
+				
+				// LOS GETTERS Y SETTERS CONMUTADOS SE UTILIZARÁN COMO SI FUESEN PROPIEDADES
+				//	PÚBLICAS, AUNQUE EN REALIDAD, POR DEBAJO, SON MÉTODOS:
+				
+				
+				// SETTER ... ASIGNACIÓN DE VALOR AL ATRIBUTO PRIVADO:
+				pintura.colorPintura = "VERDE";			
+				
+				// GETTER ... CONSULTA DEL VALOR DEL ATRIBUTO PRIVADO:
+				alert("VALOR DE LA PROPIEDAD PRIVADA color = " + pintura.colorPintura);
+				
+								
+				alert(pintura);
+				
+			</script>
+			
+
+		</div>
+		
+	</body>
+	
+</html>
